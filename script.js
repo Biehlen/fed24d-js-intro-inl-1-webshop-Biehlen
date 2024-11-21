@@ -10,6 +10,7 @@ const products = [
             url: 'assets/Chocolate.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt av choklad och färgglatt strössel med ett rött körsbär på toppen'
         },
     },
@@ -24,6 +25,7 @@ const products = [
             url: 'assets/Apple.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk med äppelfyllning'
         },
     },
@@ -38,6 +40,7 @@ const products = [
             url: 'assets/Blueberry.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt med blå/lila blåbärsfrosting och dekorerad med strössel och färska blåbär'
         },
     },
@@ -52,6 +55,7 @@ const products = [
             url: 'assets/Cinnamon.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En klassisk munk smaksatt med kanel och dekorerad med pudrat florsocker'
         },
     },
@@ -66,6 +70,7 @@ const products = [
             url: 'assets/Lemon.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En citronmunk med vit frosting dekorerad med riven samt skivad citron och blått strössel'
         },
     },
@@ -80,6 +85,7 @@ const products = [
             url: 'assets/Lime.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt med grön limefrosting och dekorerad med färgglatt strössel'
         },
     },
@@ -94,6 +100,7 @@ const products = [
             url: 'assets/Marshmellow.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt med vaniljfrosting, färgglatt strössel samt baby marshmellows'
         },
     },
@@ -108,6 +115,7 @@ const products = [
             url: 'assets/Nutella.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk fylld med nutella dekorerad med pudrat florsocker samt toppad med en klick nutella'
         },
     },
@@ -122,6 +130,7 @@ const products = [
             url: 'assets/Pink sprinkle.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt med rosa hallon och vanilj frosting och toppad med färgglatt strössel'
         },
     },
@@ -136,6 +145,7 @@ const products = [
             url: 'assets/Smores.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt med smält choklad, kaksmulor och rostade marshmellows'
         },
     },
@@ -150,6 +160,7 @@ const products = [
             url: 'assets/Vanilla.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En klassisk munk fylld med vaniljkräm toppad med pudrat florsocker'
         },
     },
@@ -164,6 +175,7 @@ const products = [
             url: 'assets/Strawberry.jpeg',
             width: '1024',
             height: '1024',
+            loading: 'lazy',
             alt: 'En munk täckt med rosa jordgubbsfrosting toppad med färgglatt strössel och en färsk jordgubbe'
         },
     },
