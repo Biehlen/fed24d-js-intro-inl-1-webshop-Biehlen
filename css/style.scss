@@ -1,13 +1,20 @@
+@import 'normalize';
+
 body {
     background-color: rgb(255, 250, 240);
 }
 
+.cart {
+    background-color: rgb(215, 236, 215);
+    width: 100vw;
+}
+
 img {
-    max-width: 100%;
+    max-width: 100px;
     height: auto;
     display: block;
 }
-/*@import 'mobile';
+@import 'mobile';
 
 @media screen and (min-width: 760px) {
     @import 'tablet';
@@ -15,4 +22,4 @@ img {
 
 @media screen and (min-width: 1280px) {
     @import 'desktop';
-}*/
+}
