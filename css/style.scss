@@ -1,20 +1,29 @@
 @import 'normalize';
 
+@import 'mobile';
+
 body {
     background-color: rgb(255, 250, 240);
+    width: 100vw;
 }
 
 .cart {
     background-color: rgb(215, 236, 215);
     width: 100vw;
+    padding: 10px;
 }
 
-img {
-    max-width: 100px;
-    height: auto;
-    display: block;
+.product {
+    margin-bottom: 2rem;
+    img {
+        max-width: 250px;
+        height: auto;
+        display: block;
+    }
 }
-@import 'mobile';
+
+
+
 
 @media screen and (min-width: 760px) {
     @import 'tablet';

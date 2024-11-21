@@ -1,11 +1,11 @@
 const products = [
     {
         id: 0,
-        name: 'Choklad och körsbär',
-        price: '13kr',
-        rating: '4',
+        name: 'Chocolate Cherry',
+        price: 13,
+        rating: 4,
         amount: 0,
-        category: 'Choklad',
+        category: 'Chocolate',
         img: {
             url: 'assets/Chocolate.jpeg',
             width: '1024',
@@ -15,11 +15,11 @@ const products = [
     },
     {
         id: 1,
-        name: 'Äppelpaj',
-        price: '15kr',
-        rating: '4,5',
+        name: 'Appelpie',
+        price: 15,
+        rating: 4.5,
         amount: 0,
-        category: 'Fyllda munkar',
+        category: 'Filled donuts',
         img: {
             url: 'assets/Apple.jpeg',
             width: '1024',
@@ -29,11 +29,11 @@ const products = [
     },
     {
         id: 2,
-        name: 'Blåbär',
-        price: '13kr',
-        rating: '4',
+        name: 'Blueberry dream',
+        price: 13,
+        rating: 4,
         amount: 0,
-        category: 'Frukt och bär',
+        category: 'Fruits and berries',
         img: {
             url: 'assets/Blueberry.jpeg',
             width: '1024',
@@ -43,11 +43,11 @@ const products = [
     },
     {
         id: 3,
-        name: 'Kanel',
-        price: '13kr',
-        rating: '4.5',
+        name: 'Cinnamon',
+        price: 13,
+        rating: 4.5,
         amount: 0,
-        category: 'Klassiker',
+        category: 'Classic',
         img: {
             url: 'assets/Cinnamon.jpeg',
             width: '1024',
@@ -57,11 +57,11 @@ const products = [
     },
     {
         id: 4,
-        name: 'Citron',
-        price: '13kr',
-        rating: '4',
+        name: 'Lemon Lovers',
+        price: 13,
+        rating: 4,
         amount: 0,
-        category: 'Frukt och bär',
+        category: 'Fruits and berries',
         img: {
             url: 'assets/Lemon.jpeg',
             width: '1024',
@@ -71,11 +71,11 @@ const products = [
     },
     {
         id: 5,
-        name: 'Lime',
-        price: '13kr',
-        rating: '3.5',
+        name: 'Lime Time',
+        price: 13,
+        rating: 3.5,
         amount: 0,
-        category: 'Frukt och bär',
+        category: 'Fruits and berries',
         img: {
             url: 'assets/Lime.jpeg',
             width: '1024',
@@ -85,11 +85,11 @@ const products = [
     },
     {
         id: 6,
-        name: 'Marshmellow',
-        price: '14kr',
-        rating: '4.5',
+        name: 'Marshmellow heaven',
+        price: 14,
+        rating: 4.5,
         amount: 0,
-        category: 'Klassiker',
+        category: 'Classic',
         img: {
             url: 'assets/Marshmellow.jpeg',
             width: '1024',
@@ -99,11 +99,11 @@ const products = [
     },
     {
         id: 7,
-        name: 'Nutella',
-        price: '15kr',
-        rating: '4.5',
+        name: 'Nutella Fever',
+        price: 15,
+        rating: 4.5,
         amount: 0,
-        category: 'Fyllda munkar, choklad',
+        category: 'Filled donuts',
         img: {
             url: 'assets/Nutella.jpeg',
             width: '1024',
@@ -114,10 +114,10 @@ const products = [
     {
         id: 8,
         name: 'Pink sprinkle',
-        price: '13kr',
-        rating: '4',
+        price: 13,
+        rating: 4,
         amount: 0,
-        category: 'Klassiker',
+        category: 'Classic',
         img: {
             url: 'assets/Pink sprinkle.jpeg',
             width: '1024',
@@ -128,10 +128,10 @@ const products = [
     {
         id: 9,
         name: 'Smores',
-        price: '15kr',
-        rating: '4.5',
+        price: 15,
+        rating: 4.5,
         amount: 0,
-        category: 'Choklad',
+        category: 'Chocolate',
         img: {
             url: 'assets/Smores.jpeg',
             width: '1024',
@@ -141,11 +141,11 @@ const products = [
     },
     {
         id: 10,
-        name: 'Vanilj',
-        price: '14kr',
-        rating: '4',
+        name: 'Vanilla',
+        price: 14,
+        rating: 4,
         amount: 0,
-        category: 'Fyllda munkar',
+        category: 'Filled donuts',
         img: {
             url: 'assets/Vanilla.jpeg',
             width: '1024',
@@ -155,9 +155,9 @@ const products = [
     },
     {
         id: 11,
-        name: 'Jordgubb',
-        price: '13kr',
-        rating: '4',
+        name: 'Strawberry on top',
+        price: 13,
+        rating: 4,
         amount: 0,
         category: 'Frukt och bär',
         img: {
@@ -181,8 +181,49 @@ const productsListDiv = document.querySelector('#products-list');
 
 const cart = document.querySelector('#cart-summary');
 function updateAndPrintCart() {
+
+    /* 
+    Att Göra: 
+    x En container i html där producterna skrivs ut
+    x Produkter som har minst 1 i antal: filter 
+    x Loop för att skriva ut produkterna
+    - totalsumma
+    - om det inte finns några produkter eller om man minskar antalet av en produkt till 0
+        så ska det skrivas ut att varukorgen är tom
+    */
+
     const cartProducts = products.filter((product) => product.amount > 0);
-}
+    
+
+    // Skriv ut valda produkterna i varukorgen
+
+    let sum = 0;
+
+    cart.innerHTML = '', // Tömma div:en på ev tidigare innehåll 
+    cartProducts.forEach(product => {
+        if (product.amount > 0) {
+            sum += product.amount * product.price
+            cart.innerHTML += `
+                <div>
+                    ${product.name}: ${product.amount} st - ${product.amount * product.price} kr
+                </div>
+            `;
+        };
+
+    });
+
+    cart.innerHTML += `<p>Totalsumma: ${sum} kr</p>`;
+
+    
+
+    // TODO: Summa av alla produkter, tips: använd reduce
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+
+
+    
+};
+
+
 
 // ------------------------------------------------
 // -------------------- PRINT PRODUCTS IN HTML-----
@@ -208,19 +249,17 @@ function printProductsList() {
         `;
     });
 
-    const decreaseButtons = document.querySelectorAll('button.decrease');
-    const increaseButtons = document.querySelectorAll('button.increase');
 
+    const decreaseButtons = document.querySelectorAll('button.decrease');
     decreaseButtons.forEach(button => {
         button.addEventListener('click', decreaseProductCount);
     });
 
-    
+    const increaseButtons = document.querySelectorAll('button.increase');
     increaseButtons.forEach(button => {
         button.addEventListener('click', increaseProductCount);
     });
 
-    // TODO Gör samma för decrease button, vid klick minska antalet 
 }
 
 printProductsList();
@@ -236,6 +275,7 @@ function decreaseProductCount(e) {
     } else {
         products[productId].amount -= 1;
     }
+
 
     printProductsList();
 
@@ -264,4 +304,6 @@ function increaseProductCount(e) {
 
     // Alternativ 2
     printProductsList();
+
+    updateAndPrintCart();
 }
