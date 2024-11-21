@@ -174,12 +174,21 @@ const products = [
 // ------------------ HTML ELEMENTS ---------------
 // ------------------------------------------------
 const productsListDiv = document.querySelector('#products-list');
+const cart = document.querySelector('#cart-summary');
 
 // ------------------------------------------------
 // -----------------------SHOW PRODUCTS IN CART----
 // ------------------------------------------------
+const today = new Date();
 
-const cart = document.querySelector('#cart-summary');
+const isFriday = today.getDay() === 6; // true eller false 
+const isMonday = today.getDay() === 1;
+const currentHour = today.getHours();
+
+let slownessTimeout = setTimeout(slowCustomerMessage, 1000  * 60 * 15);
+
+
+
 function updateAndPrintCart() {
 
     /* 
@@ -192,27 +201,71 @@ function updateAndPrintCart() {
         så ska det skrivas ut att varukorgen är tom
     */
 
+    /*
+    Specialregler: 
+    x På måndagar innan kl. 10 ges 10% rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen 
+    som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
+    x På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl, 03.00 tillkommer ett helgpåslag på 15%
+    på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priser ska bara vara högre i "utskriften"
+    av munkarna. 
+    - Om kunden har beställt för totalt mer än 800 kr ska det inte gå att välja faktura som betalsätt
+    x Om kunden har beställt minst 10 munkar av samma sort ska munkpriset för just denna munksort rabatteras med 10 %
+    x Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av 
+    totalbeloppet i varukorgen 
+    x Om kunden inte slutfört beställningen inom 15 min kunden meddelas att det går för långsamt
+    - Och formuläret ska rensas
+    */
+
+    
+
     const cartProducts = products.filter((product) => product.amount > 0);
     
 
     // Skriv ut valda produkterna i varukorgen
 
     let sum = 0;
+    let orderedProductAmount = 0;
+    let msg = '';
+    let priceIncrease = getPriceMultiplier();
 
     cart.innerHTML = '', // Tömma div:en på ev tidigare innehåll 
     cartProducts.forEach(product => {
+        orderedProductAmount += product.amount;
         if (product.amount > 0) {
-            sum += product.amount * product.price
+            let productPrice = product.price;
+            if (product.amount >= 10) {
+                productPrice *= 0.9;
+            }
+            const adjustedDonutPrice = productPrice * priceIncrease;
+
+            sum += product.amount * adjustedDonutPrice  //product.price
+
             cart.innerHTML += `
                 <div>
-                    ${product.name}: ${product.amount} st - ${product.amount * product.price} kr
+                    ${product.name}: ${product.amount} st - ${Math.round(product.amount * adjustedDonutPrice)} kr
                 </div>
             `;
         };
 
     });
 
-    cart.innerHTML += `<p>Totalsumma: ${sum} kr</p>`;
+    if (sum <= 0) {
+        return;
+    }
+
+    if (today.getDay() === 1) {
+        sum *= 0.9; // 100 - 10 => 90, 90 / 100
+        msg += '<p>Måndagsrabatt: 10 % på hela beställningen</p>';
+    }
+
+    cart.innerHTML += `<p>Total sum: ${Math.round(sum)} kr</p>`;
+    cart.innerHTML += `<div>${msg}</div>`;
+
+    if (orderedProductAmount > 15) {
+        cart.innerHTML += '<p>Shipping: 0 kr</p>';
+    } else {
+        cart.innerHTML += `<p>Shipping: ${Math.round(25 + (0.1 * sum))} kr</p>`;
+    }
 
     
 
@@ -223,6 +276,13 @@ function updateAndPrintCart() {
     
 };
 
+function getPriceMultiplier() {
+    if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
+        return 1.15;
+    }
+    return 1;
+}
+
 
 
 // ------------------------------------------------
@@ -232,12 +292,14 @@ function updateAndPrintCart() {
 function printProductsList() {
     productsListDiv.innerHTML = '';
 
+    let priceIncrease = getPriceMultiplier();
+
     products.forEach(product => {
         productsListDiv.innerHTML += `
             <article class="product">
                 <img src="${product.img.url}" alt="${product.img.alt}">
                 <h3>${product.name}</h3>
-                <p>${product.price} kr</p>
+                <p>${product.price * priceIncrease} kr</p>
                 <p>Rating: ${product.rating}</p>
                 <span>Amount: ${product.amount}</span>
                 <div>
@@ -306,4 +368,8 @@ function increaseProductCount(e) {
     printProductsList();
 
     updateAndPrintCart();
+}
+
+function slowCustomerMessage() {
+    alert('Du är för långsam på att beställa!');
 }
