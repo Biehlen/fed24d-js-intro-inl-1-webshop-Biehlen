@@ -385,3 +385,31 @@ function increaseProductCount(e) {
 function slowCustomerMessage() {
     alert('Du är för långsam på att beställa!');
 }
+
+
+const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
+
+cardInvoiceRadios.forEach(radioBtn => {
+    radioBtn.addEventListener('change', switchPaymentMethod);
+});
+
+const invoiceOption = document.querySelector('#invoice');
+const cardOption = document.querySelector('#card');
+
+/*
+* Switches between invoice payment method and card payment method.
+* Toggles their visibility.
+*/
+function switchPaymentMethod(e) {
+    invoiceOption.classList.toggle('hidden');
+    cardOption.classList.toggle('hidden');
+}
+
+const personalID = document.querySelector('#personalID');
+personalID.addEventListener('change', checkPersonalIdNumber);
+
+const personalIdRegEx = new RegExp
+
+function checkPersonalIdNumber() {
+    console.log(personalID.value);
+}

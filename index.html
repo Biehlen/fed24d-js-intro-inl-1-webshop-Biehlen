@@ -3,35 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Donutfactory</title>
+    <title>Munkfabriken</title>
 
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
     <main>
         <header>
-            <button>Cart</button>
-            <h1>The Donutfactory</h1>
+            <button>Varukorg</button>
+            <h1>Munkfabriken</h1>
         </header>
         <div>
-            <button>Sort by price</button>
-            <button>Sort by rating</button>
-            <button>Sort by name</button>
+            <button>Sortera efter pris</button>
+            <button>Sortera efter omdöme</button>
+            <button>Sortera efter namn</button>
         </div>
         <section>
-            <h2>Products</h2>
+            <h2>Produkter</h2>
             <div id="products-list">
                 <!----Fyller på från javascript--->
             </div>
         </section>
         <section>
             <div class="cart">
-                <h3>Shoppingcart:</h3>
+                <h3>Varukorg:</h3>
                     <!----- Lista med produkter som man har lagt i sin varukorg
                     - generera med js ------>
-                    <div id="cart-summary">Your cart is empty.</div>
+                    <div id="cart-summary">Din varukorg är tom.</div>
             </div>
         </section>
+        <div class="payment-options">
+            <div class="selector">
+                <label>
+                    <input type="radio" name="payment-option" value="invoice" checked>
+                    <span>Faktura</span>
+                </label>
+                <label>
+                  <input type="radio" name="payment-option" value="card">
+                  <span>Kort</span>
+                </label>
+              </div>
+            
+              <div class="invoice" id="invoice">
+                <label>
+                  <span>Personnummer</span>
+                  <input type="text" name="personal-id" id="personalID" value="">
+                </label>
+              </div>
+            
+              <div class="card hidden" id="card">
+                <label>
+                  <span>Kortnummer</span>
+                  <input type="number" id="creditCardNumber" value="5100080000000000">
+                </label>
+                <label>
+                  <span>Datum</span>
+                  <span>
+                      <input type="number" class="small" placeholder="YY" id="creditCardYear">/<input type="number" class="small" placeholder="MM" id="creditCardMonth">
+                    </span>
+                </label>
+                <label>
+                  <span>CVC</span>
+                  <input type="number" placeholder="123" id="creditCardCvc">
+                </label>
+            </div>
+            
+            <button id="orderBtn" disabled>Beställ</button>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
