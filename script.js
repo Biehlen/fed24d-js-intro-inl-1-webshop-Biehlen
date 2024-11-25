@@ -5,7 +5,7 @@ const products = [
         price: 13,
         rating: 4,
         amount: 0,
-        category: 'Chocolate',
+        category: 'Choklad',
         img: {
             url: 'assets/Chocolate.jpeg',
             width: '1024',
@@ -20,7 +20,7 @@ const products = [
         price: 15,
         rating: 4.5,
         amount: 0,
-        category: 'Filled donuts',
+        category: 'Fyllda munkar',
         img: {
             url: 'assets/Apple.jpeg',
             width: '1024',
@@ -35,7 +35,7 @@ const products = [
         price: 13,
         rating: 4,
         amount: 0,
-        category: 'Fruits and berries',
+        category: 'Frukt och bär',
         img: {
             url: 'assets/Blueberry.jpeg',
             width: '1024',
@@ -50,7 +50,7 @@ const products = [
         price: 13,
         rating: 4.5,
         amount: 0,
-        category: 'Classic',
+        category: 'Klassiker',
         img: {
             url: 'assets/Cinnamon.jpeg',
             width: '1024',
@@ -65,7 +65,7 @@ const products = [
         price: 13,
         rating: 4,
         amount: 0,
-        category: 'Fruits and berries',
+        category: 'Frukt och bär',
         img: {
             url: 'assets/Lemon.jpeg',
             width: '1024',
@@ -80,7 +80,7 @@ const products = [
         price: 13,
         rating: 3.5,
         amount: 0,
-        category: 'Fruits and berries',
+        category: 'Frukt och bär',
         img: {
             url: 'assets/Lime.jpeg',
             width: '1024',
@@ -95,7 +95,7 @@ const products = [
         price: 14,
         rating: 4.5,
         amount: 0,
-        category: 'Classic',
+        category: 'Klassiker',
         img: {
             url: 'assets/Marshmellow.jpeg',
             width: '1024',
@@ -110,7 +110,7 @@ const products = [
         price: 15,
         rating: 4.5,
         amount: 0,
-        category: 'Filled donuts',
+        category: 'Fyllda munkar',
         img: {
             url: 'assets/Nutella.jpeg',
             width: '1024',
@@ -125,7 +125,7 @@ const products = [
         price: 13,
         rating: 4,
         amount: 0,
-        category: 'Classic',
+        category: 'Klassiker',
         img: {
             url: 'assets/Pink sprinkle.jpeg',
             width: '1024',
@@ -140,7 +140,7 @@ const products = [
         price: 15,
         rating: 4.5,
         amount: 0,
-        category: 'Chocolate',
+        category: 'Choklad',
         img: {
             url: 'assets/Smores.jpeg',
             width: '1024',
@@ -155,7 +155,7 @@ const products = [
         price: 14,
         rating: 4,
         amount: 0,
-        category: 'Filled donuts',
+        category: 'Fyllda munkar',
         img: {
             url: 'assets/Vanilla.jpeg',
             width: '1024',
