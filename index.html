@@ -18,7 +18,7 @@
             <button>Sortera efter omdöme</button>
             <button>Sortera efter namn</button>
         </div>
-        <section>
+        <section class="top">
             <h2>Produkter</h2>
             <div id="products-list">
                 <!----Fyller på från javascript--->
@@ -32,44 +32,104 @@
                     <div id="cart-summary">Din varukorg är tom.</div>
             </div>
         </section>
-        <div class="payment-options">
-            <div class="selector">
-                <label>
-                    <input type="radio" name="payment-option" value="invoice" checked>
-                    <span>Faktura</span>
-                </label>
-                <label>
-                  <input type="radio" name="payment-option" value="card">
-                  <span>Kort</span>
-                </label>
-              </div>
-            
-              <div class="invoice" id="invoice">
-                <label>
-                  <span>Personnummer</span>
-                  <input type="text" name="personal-id" id="personalID" value="">
-                </label>
-              </div>
-            
-              <div class="card hidden" id="card">
-                <label>
-                  <span>Kortnummer</span>
-                  <input type="number" id="creditCardNumber" value="5100080000000000">
-                </label>
-                <label>
-                  <span>Datum</span>
-                  <span>
-                      <input type="number" class="small" placeholder="YY" id="creditCardYear">/<input type="number" class="small" placeholder="MM" id="creditCardMonth">
-                    </span>
-                </label>
-                <label>
-                  <span>CVC</span>
-                  <input type="number" placeholder="123" id="creditCardCvc">
-                </label>
-            </div>
-            
-            <button id="orderBtn" disabled>Beställ</button>
-        </div>
+        <section class="payment-options-container">
+            <h3>Betalning:</h3>
+                <div class="info-container">
+                    <label>
+                        <span>Förnamn</span>
+                        <input type="text" name="surname" id="surname">
+                    </label>
+
+                    <label>
+                        <span>Lastname</span>
+                        <input type="text" name="lastname" id="lastname">
+                    </label>
+
+                    <label>
+                        <span>Adress</span>
+                        <input type="text" name="adress" id="adress">
+                    </label>
+
+                    <label>
+                        <span>Postnummer</span>
+                        <input type="number" name="zip-code" id="zipCode">
+                    </label>
+
+                    <label>
+                        <span>Postort</span>
+                        <input type="text" name="postal-adress" id="postalAdress">
+                    </label>
+
+                    <label>
+                        <span>Ev. portkod</span>
+                        <input type="number" name="door-code" id="doorCode">
+                    </label>
+
+                    <label>
+                        <span>Telefon</span>
+                        <input type="number" name="phonenumber" id="phonenumber">
+                    </label>
+                    
+                    <label>
+                        <span>E-postadress</span>
+                        <input type="text" name="email" id="email">
+                    </label>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="checkbox">
+                        <p>Godkännande av behandling av personuppgifter</p>
+                    </div>
+                    
+                    <div class="checkbox-container">
+                        <input type="checkbox" class="checkbox" checked>
+                        <p>Ja tack, jag vill gärna få ert nyhetsbrev</p>
+                    </div>
+                    
+                    <label class="discount-input">
+                        <span>Rabattkod</span>
+                        <input type="text" name="discount-code" id="discountCode">
+                    </label>
+                </div>
+
+                <div class="payment-options">
+                    <div class="selector">
+                        <label>
+                            <input type="radio" name="payment-option" value="invoice" checked>
+                            <span>Faktura</span>
+                        </label>
+                        <label>
+                          <input type="radio" name="payment-option" value="card">
+                          <span>Kort</span>
+                        </label>
+                      </div>
+                    
+                      <div class="invoice" id="invoice">
+                        <label>
+                          <span>Personnummer</span>
+                          <input type="text" name="personal-id" id="personalID" value="">
+                        </label>
+                      </div>
+                    
+                      <div class="card hidden" id="card">
+                        <label>
+                          <span>Kortnummer</span>
+                          <input type="number" id="creditCardNumber" value="5100080000000000">
+                        </label>
+                        <label>
+                          <span>Datum</span>
+                          <span>
+                              <input type="number" class="small" placeholder="YY" id="creditCardYear">/<input type="number" class="small" placeholder="MM" id="creditCardMonth">
+                            </span>
+                        </label>
+                        <label>
+                          <span>CVC</span>
+                          <input type="number" placeholder="123" id="creditCardCvc">
+                        </label>
+                    </div>
+                    
+                    <button id="orderBtn" disabled>Beställ</button>
+                </div>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>

@@ -1,73 +1,112 @@
-.cart {
-    background-color: rgb(215, 236, 215);
-    width: 100vw;
-    padding: 10px;
-}
-
-.product {
-    margin-bottom: 2rem;
-    img {
-        max-width: 250px;
-        height: auto;
-        display: block;
+main {
+    .cart {
+        background-color: rgb(215, 236, 215);
+        width: 100vw;
+        padding: 10px;
     }
-}
-
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.2rem;
-  }
-  
-  input {
-    font-size: 1.2rem;
-    padding: 4px;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .payment-options {
-    background-color: rgb(210, 231, 231);
-    border-radius: 8px;
-    padding: 8px;
-    border: 1px solid #262626;
-  
-    button {
-      padding: 8px 16px;
-      font-size: 1.2rem;
-      background-color: green;
-      border: 0;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-      &:disabled {
-        background-color: #b5b5b5;
-        cursor: not-allowed;
-      }
-    }
-  
-    .selector {
-      margin-block: 16px;
-      text-align: center;
-    }
-  
-    input.small {
-      width: 80px;
-    }
-  
-    .card, .invoice {
-      label {
+    
+    .top {
         display: flex;
-        gap: 8px;
-        margin-block: 8px;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
-      }
+    
+        .product {
+            margin-bottom: 2rem;
+            img {
+                max-width: 250px;
+                height: auto;
+                display: block;
+            }
+        }
     }
-  
-  }
+    
+    
+    .info-container {
+    
+        label {
+            display: flex;
+            flex-direction: column;
+        }
+
+        span {
+            font-weight: 800;
+        }
+    
+        input {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.7rem;
+        }
+    }
+
+    .checkbox-container {
+        display: flex;
+        p {
+            font-size: 1rem;
+            
+        }
+    }
+
+    .discount-input {
+        margin-bottom: 1rem;
+    }
+    
+    * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 1.2rem;
+      }
+      
+      input {
+        font-size: 1.2rem;
+        padding: 4px;
+      }
+      
+      .hidden {
+        display: none;
+      }
+      
+      .payment-options {
+        background-color: rgb(210, 231, 231);
+        border-radius: 8px;
+        padding: 8px;
+        border: 1px solid #262626;
+      
+        button {
+          padding: 8px 16px;
+          font-size: 1.2rem;
+          background-color: green;
+          border: 0;
+          border-radius: 8px;
+          cursor: pointer;
+          color: white;
+          &:disabled {
+            background-color: #b5b5b5;
+            cursor: not-allowed;
+          }
+        }
+      
+        .selector {
+          margin-block: 16px;
+          text-align: center;
+        }
+      
+        input.small {
+          width: 80px;
+        }
+      
+        .card, .invoice {
+          label {
+            display: flex;
+            gap: 8px;
+            margin-block: 8px;
+            align-items: center;
+            justify-content: space-between;
+          }
+        }
+      
+      }
+}

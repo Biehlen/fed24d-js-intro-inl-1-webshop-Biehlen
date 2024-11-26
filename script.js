@@ -208,7 +208,7 @@ function updateAndPrintCart() {
     x En container i html där producterna skrivs ut
     x Produkter som har minst 1 i antal: filter 
     x Loop för att skriva ut produkterna
-    - totalsumma
+    x totalsumma
     - om det inte finns några produkter eller om man minskar antalet av en produkt till 0
         så ska det skrivas ut att varukorgen är tom
     */
@@ -258,7 +258,6 @@ function updateAndPrintCart() {
                 </div>
             `;
         };
-
     });
 
     if (sum <= 0) {
@@ -270,13 +269,13 @@ function updateAndPrintCart() {
         msg += '<p>Måndagsrabatt: 10 % på hela beställningen</p>';
     }
 
-    cart.innerHTML += `<p>Total sum: ${Math.round(sum)} kr</p>`;
+    cart.innerHTML += `<p>Total summa: ${Math.round(sum)} kr</p>`;
     cart.innerHTML += `<div>${msg}</div>`;
 
     if (orderedProductAmount > 15) {
-        cart.innerHTML += '<p>Shipping: 0 kr</p>';
+        cart.innerHTML += '<p>Frakt: 0 kr</p>';
     } else {
-        cart.innerHTML += `<p>Shipping: ${Math.round(25 + (0.1 * sum))} kr</p>`;
+        cart.innerHTML += `<p>Frakt: ${Math.round(25 + (0.1 * sum))} kr</p>`;
     }
 
     
@@ -352,7 +351,7 @@ function decreaseProductCount(e) {
 
 
     printProductsList();
-
+    updateAndPrintCart();
 }
 
 function increaseProductCount(e) {
