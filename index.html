@@ -94,23 +94,23 @@
                 <div class="payment-options">
                     <div class="selector">
                         <label>
-                            <input type="radio" name="payment-option" value="invoice" checked>
+                            <input type="radio" name="payment-option" value="invoice" >
                             <span>Faktura</span>
                         </label>
                         <label>
-                          <input type="radio" name="payment-option" value="card">
+                          <input type="radio" name="payment-option" value="card" checked>
                           <span>Kort</span>
                         </label>
                       </div>
                     
-                      <div class="invoice" id="invoice">
+                      <div class="invoice hidden" id="invoice">
                         <label>
                           <span>Personnummer</span>
                           <input type="text" name="personal-id" id="personalID" value="">
                         </label>
                       </div>
                     
-                      <div class="card hidden" id="card">
+                      <div class="card" id="card">
                         <label>
                           <span>Kortnummer</span>
                           <input type="number" id="creditCardNumber" value="5100080000000000">

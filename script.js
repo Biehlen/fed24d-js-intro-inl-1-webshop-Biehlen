@@ -231,16 +231,15 @@ function updateAndPrintCart() {
     
 
     const cartProducts = products.filter((product) => product.amount > 0);
-    
 
-    // Skriv ut valda produkterna i varukorgen
+    // Print selected products to cart 
 
     let sum = 0;
     let orderedProductAmount = 0;
     let msg = '';
     let priceIncrease = getPriceMultiplier();
 
-    cart.innerHTML = '', // Tömma div:en på ev tidigare innehåll 
+    cart.innerHTML = '', // Empty the div of former content
     cartProducts.forEach(product => {
         orderedProductAmount += product.amount;
         if (product.amount > 0) {
@@ -277,13 +276,6 @@ function updateAndPrintCart() {
     } else {
         cart.innerHTML += `<p>Frakt: ${Math.round(25 + (0.1 * sum))} kr</p>`;
     }
-
-    
-
-    // TODO: Summa av alla produkter, tips: använd reduce
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
-
-
     
 };
 
@@ -293,7 +285,6 @@ function getPriceMultiplier() {
     }
     return 1;
 }
-
 
 
 // ------------------------------------------------
@@ -357,25 +348,20 @@ function decreaseProductCount(e) {
 function increaseProductCount(e) {
     const productId = Number(e.target.id.replace('increase-', ''));
     console.log('clicked on button with id', productId);
-    // Leta rätt på produkten i arrayen som har det id:et
+    // Find the right product in the array that has the right id
     const foundProductIndex = products.findIndex(product => product.id === productId);
     console.log('found product at index', foundProductIndex);
 
-    // Meddelande till mig själv. Om produkten inte finns, skriv ut felmeddelande i consolen
+    // Massage to myself. If product does'nt exist, print error message in console
     if (foundProductIndex === -1) {
         console.error('Det finns ingen sådan produkt i produktlistan! Kolla att id:t är korrekt')
         return;
     }
 
-    //Öka dess amout med -1
     products[foundProductIndex].amount += 1;
 
 
-    // Skriv ut produklistan
-    // Alternativ 1
-    // document.querySelector(`#input-${productId}`).value = products[foundProductIndex].amount;
-
-    // Alternativ 2
+    // Print productlist 
     printProductsList();
 
     updateAndPrintCart();
@@ -385,30 +371,93 @@ function slowCustomerMessage() {
     alert('Du är för långsam på att beställa!');
 }
 
+// ------------------------------------------------
+// -----------------------PAYMENT OPTIONS----------
+// ------------------------------------------------
+
+/*
+x Switches between invoice payment method and card payment method.
+x Toggles their visibility.
+- Validate card number, year, month and cvc with RegEx
+*/
 
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
+const inputs = [
+    document.querySelector('#creditCardNumber'),
+    document.querySelector('#creditCardYear'),
+    document.querySelector('#creditCardMonth'),
+    document.querySelector('#creditCardCvc'),
+    document.querySelector('#personalID')
+];
+
+const invoiceOption = document.querySelector('#invoice');
+const cardOption = document.querySelector('#card');
+const orderBtn = document.querySelector('#orderBtn');
+
+// Default options
+let selectedPaymentOption = 'card';
+
+// REGEX
+const personalIdRegEx = new RegExp(/^(\d{10}|\d{12}|\d{6}-\d{4}|\d{8}-\d{4}|\d{8} \d{4}|\d{6} \d{4})/);
+const creditCardNumberRegEx = new RegExp(/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/); // MasterCard
+
+// Add event listeners
+inputs.forEach(input => {
+    input.addEventListener('change', activateOrderButton);
+    input.addEventListener('focusout', activateOrderButton);
+});
 
 cardInvoiceRadios.forEach(radioBtn => {
     radioBtn.addEventListener('change', switchPaymentMethod);
 });
 
-const invoiceOption = document.querySelector('#invoice');
-const cardOption = document.querySelector('#card');
-
-/*
-* Switches between invoice payment method and card payment method.
-* Toggles their visibility.
-*/
 function switchPaymentMethod(e) {
     invoiceOption.classList.toggle('hidden');
     cardOption.classList.toggle('hidden');
+
+    selectedPaymentOption = e.target.value;
 }
 
-const personalID = document.querySelector('#personalID');
-personalID.addEventListener('change', checkPersonalIdNumber);
 
-const personalIdRegEx = new RegExp
-
-function checkPersonalIdNumber() {
-    console.log(personalID.value);
+function isPersonalIdNumberValid() {
+    return personalIdRegEx.exec(personalId.value);
 }
+
+// Activate order button if all fields are correctly filled 
+ 
+function activateOrderButton() {
+    orderBtn.setAttribute('disabled', '');
+
+    if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
+        return;
+    }
+
+    if (selectedPaymentOption === 'card') {
+        //check card number
+        if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
+            console.warn('Credit card number not valid.');
+            return;
+        }
+
+        // Check card year
+        let year = Number(creditCardYear.value);
+        const today = new Date ();
+        const shortYear = Number(String(today.getFullYear()).substring(2));
+
+        if (year > shortYear + 2 || year < shortYear) {
+            console.warn('Credit card month not valid.');
+            return;
+        }
+
+        //TODO: Fixa månad, obs. "padStart" med 0
+
+        // Check card CVC
+        if (creditCardCvc.value.length !== 3 ) {
+            console.warn('CVC not valid.');
+            return;
+        }
+    }
+
+    orderBtn.removeAttribute('disabled');
+}
+
