@@ -49,6 +49,11 @@ main {
 
     .discount-input {
         margin-bottom: 1rem;
+        display: inline-flex;
+        flex-direction: row;
+        button {
+            flex-direction: row;
+        }
     }
     
     * {
