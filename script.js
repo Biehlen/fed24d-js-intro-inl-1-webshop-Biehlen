@@ -18,7 +18,7 @@ const products = [
         id: 1,
         name: 'Appelpie',
         price: 15,
-        rating: 4.5,
+        rating: 5,
         amount: 0,
         category: 'Fyllda munkar',
         img: {
@@ -48,7 +48,7 @@ const products = [
         id: 3,
         name: 'Cinnamon',
         price: 13,
-        rating: 4.5,
+        rating: 4,
         amount: 0,
         category: 'Klassiker',
         img: {
@@ -78,7 +78,7 @@ const products = [
         id: 5,
         name: 'Lime Time',
         price: 13,
-        rating: 3.5,
+        rating: 3,
         amount: 0,
         category: 'Frukt och bär',
         img: {
@@ -93,7 +93,7 @@ const products = [
         id: 6,
         name: 'Marshmellow heaven',
         price: 14,
-        rating: 4.5,
+        rating: 4,
         amount: 0,
         category: 'Klassiker',
         img: {
@@ -108,7 +108,7 @@ const products = [
         id: 7,
         name: 'Nutella Fever',
         price: 15,
-        rating: 4.5,
+        rating: 5,
         amount: 0,
         category: 'Fyllda munkar',
         img: {
@@ -138,7 +138,7 @@ const products = [
         id: 9,
         name: 'Smores',
         price: 15,
-        rating: 4.5,
+        rating: 5,
         amount: 0,
         category: 'Choklad',
         img: {
@@ -291,7 +291,18 @@ function getPriceMultiplier() {
 // -------------------- PRINT PRODUCTS IN HTML-----
 // ------------------------------------------------
 
-
+function getRatingHtml(rating) {
+    let html = '';
+    for (let i = 0; i < rating; i++) {
+        if (rating % 1 === 0) {
+            html += `<span>🍩</span>`;
+        } else {
+            html += `<span></span>`
+        }
+        
+    }
+    return html;
+}
 
 
 function printProductsList() {
@@ -305,7 +316,7 @@ function printProductsList() {
                 <img src="${product.img.url}" alt="${product.img.alt}">
                 <h3>${product.name}</h3>
                 <p>Pris: ${product.price * priceIncrease} kr</p>
-                <p>Omdöme: ${product.rating}</p>
+                <p>Omdöme: ${getRatingHtml(product.rating)}</p>
                 <div>
                     <button class="decrease" id="decrease-${product.id}">-</button>
                     <input type="number" min="0" value="${product.amount}" id="input-${product.id}">
