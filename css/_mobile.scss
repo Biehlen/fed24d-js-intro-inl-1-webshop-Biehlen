@@ -1,10 +1,32 @@
 main {
     
+    header {
+        background-color: rgb(215, 236, 215);
+        align-content: center;
+
+
+        h1 {
+            font-size: 3rem;
+            display: flex;
+            justify-content: center;
+            
+        }
+    }
+    
+
     
     .top {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        h2 {
+            font-size: 2rem;
+        }
+        .filter-products {
+            margin-bottom: 2rem;
+            
+        }
        
         #products-list {
             display: flex;
@@ -31,7 +53,7 @@ main {
     }
     
     
-    .info-container {
+    .shipping-info-container {
     
         label {
             display: flex;

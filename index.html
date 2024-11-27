@@ -13,13 +13,16 @@
             <button>Varukorg</button>
             <h1>Munkfabriken</h1>
         </header>
-        <div>
-            <button>Sortera efter pris</button>
-            <button>Sortera efter omdöme</button>
-            <button>Sortera efter namn</button>
-        </div>
         <section class="top">
-            <h2>Produkter</h2>
+            <h2>Våra produkter</h2>
+            <div class="filter-products">
+                <div class="filter-container" id="filterProducts">
+                    <a href="">Namn</a>
+                    <a href="">Pris</a>
+                    <a href="">Kategori</a>
+                    <a href="">Omdöme</a>
+                </div>
+            </div>
             <div id="products-list">
                 <!----Fyller på från javascript--->
             </div>
@@ -34,45 +37,45 @@
         </section>
         <section class="payment-options-container">
             <h3>Betalning:</h3>
-                <div class="info-container">
+                <div class="shipping-info-container" id="">
                     <label>
                         <span>Förnamn</span>
-                        <input type="text" name="surname" id="surname">
+                        <input type="text" name="surname" id="input">
                     </label>
 
                     <label>
                         <span>Efternamn</span>
-                        <input type="text" name="lastname" id="lastname">
+                        <input type="text" name="lastname" id="input">
                     </label>
 
                     <label>
                         <span>Adress</span>
-                        <input type="text" name="adress" id="adress">
+                        <input type="text" name="adress" id="input">
                     </label>
 
                     <label>
                         <span>Postnummer</span>
-                        <input type="number" name="zip-code" id="zipCode">
+                        <input type="number" name="zip-code" id="input">
                     </label>
 
                     <label>
                         <span>Postort</span>
-                        <input type="text" name="postal-adress" id="postalAdress">
+                        <input type="text" name="postal-adress" id="input">
                     </label>
 
                     <label>
                         <span>Ev. portkod</span>
-                        <input type="number" name="door-code" id="doorCode">
+                        <input type="number" name="door-code" id="input">
                     </label>
 
                     <label>
                         <span>Telefon</span>
-                        <input type="number" name="phonenumber" id="phonenumber">
+                        <input type="number" name="phonenumber" id="input">
                     </label>
                     
                     <label>
                         <span>E-postadress</span>
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="input">
                     </label>
                     
                     <div class="checkbox-container">
@@ -87,7 +90,7 @@
                     
                     <label class="discount-input">
                         <span>Rabattkod</span>
-                        <input type="text" name="discount-code" id="discountCode">
+                        <input type="text" name="discount-code" id="input">
                         <button>Aktivera</button>
                     </label>
                 </div>

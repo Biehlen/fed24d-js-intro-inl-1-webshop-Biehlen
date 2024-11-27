@@ -187,10 +187,8 @@ const products = [
 // ------------------------------------------------
 const productsListDiv = document.querySelector('#products-list');
 const cart = document.querySelector('#cart-summary');
+const filteredProductsDiv = document.querySelector('#filter-products');
 
-// ------------------------------------------------
-// -----------------------SHOW PRODUCTS IN CART----
-// ------------------------------------------------
 const today = new Date();
 
 const isFriday = today.getDay() === 6; // true eller false 
@@ -199,7 +197,9 @@ const currentHour = today.getHours();
 
 let slownessTimeout = setTimeout(slowCustomerMessage, 1000  * 60 * 15);
 
-
+// ------------------------------------------------
+// -----------------------SHOW PRODUCTS IN CART----
+// ------------------------------------------------
 
 function updateAndPrintCart() {
 
@@ -259,6 +259,7 @@ function updateAndPrintCart() {
         };
     });
 
+
     if (sum <= 0) {
         return;
     }
@@ -276,7 +277,6 @@ function updateAndPrintCart() {
     } else {
         cart.innerHTML += `<p>Frakt: ${Math.round(25 + (0.1 * sum))} kr</p>`;
     }
-    
 };
 
 function getPriceMultiplier() {
@@ -291,6 +291,9 @@ function getPriceMultiplier() {
 // -------------------- PRINT PRODUCTS IN HTML-----
 // ------------------------------------------------
 
+
+
+
 function printProductsList() {
     productsListDiv.innerHTML = '';
 
@@ -301,9 +304,8 @@ function printProductsList() {
             <article class="product">
                 <img src="${product.img.url}" alt="${product.img.alt}">
                 <h3>${product.name}</h3>
-                <p>${product.price * priceIncrease} kr</p>
-                <p>Rating: ${product.rating}</p>
-                <span>Amount: ${product.amount}</span>
+                <p>Pris: ${product.price * priceIncrease} kr</p>
+                <p>Omdöme: ${product.rating}</p>
                 <div>
                     <button class="decrease" id="decrease-${product.id}">-</button>
                     <input type="number" min="0" value="${product.amount}" id="input-${product.id}">
