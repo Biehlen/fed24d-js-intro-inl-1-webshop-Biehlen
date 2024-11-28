@@ -127,7 +127,7 @@ const products = [
         amount: 0,
         category: 'Klassiker',
         img: {
-            url: 'assets/Pink sprinkle.jpeg',
+            url: 'assets/PinkSprinkle.jpeg',
             width: '1024',
             height: '1024',
             loading: 'lazy',
@@ -189,8 +189,6 @@ const productsListDiv = document.querySelector('#products-list');
 const cart = document.querySelector('#cart-summary');
 const filteredProductsDiv = document.querySelector('#filter-products');
 
-const today = new Date();
-
 const isFriday = today.getDay() === 6; // true eller false 
 const isMonday = today.getDay() === 1;
 const currentHour = today.getHours();
@@ -228,6 +226,7 @@ function updateAndPrintCart() {
     - Och formuläret ska rensas
     */
 
+    const today = new Date();
     
 
     const cartProducts = products.filter((product) => product.amount > 0);
