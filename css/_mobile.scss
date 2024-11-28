@@ -5,6 +5,18 @@ main {
         align-content: center;
 
 
+        
+    .material-symbols-outlined {
+        font-size: 2rem;
+        color: black;
+        font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+
+
         h1 {
             font-size: 3rem;
             display: flex;

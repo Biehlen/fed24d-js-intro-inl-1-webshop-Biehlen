@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Munkfabriken</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=shopping_cart" />
+
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
     <main>
         <header>
-            <button>Varukorg</button>
+            <a href="#anchor"><span class="material-symbols-outlined">shopping_cart</span></a>
             <h1>Munkfabriken</h1>
         </header>
         <section class="top">
@@ -28,7 +30,7 @@
             </div>
         </section>
         <section class="cart-container">
-            <div class="cart">
+            <div class="cart" id="anchor">
                 <h3>Varukorg:</h3>
                     <!----- Lista med produkter som man har lagt i sin varukorg
                     - generera med js ------>
