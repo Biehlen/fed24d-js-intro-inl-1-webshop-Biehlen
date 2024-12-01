@@ -19,10 +19,33 @@
             <h2>Våra produkter</h2>
             <div class="filter-products">
                 <div class="filter-container" id="filterProducts">
-                    <a href="">Namn</a>
-                    <a href="">Pris</a>
-                    <a href="">Kategori</a>
-                    <a href="">Omdöme</a>
+                    <label>
+                        <input type="radio" name="selectCategory" id="sortByName" value="name">
+                        Name
+                    </label>
+                    <label>
+                        <input type="radio" name="selectCategory" id="sortByRating" value="rating">
+                        Omdöme
+                    </label>
+                    <label>
+                        <input type="radio" name="selectCategory" id="sortByCategory" value="category">
+                        Kategori
+                    </label>
+                    <label>
+                        <input type="radio" name="selectCategory" value="all">
+                        Alla
+                    </label>
+
+                    <p>
+                        <label>
+                            <span>Pris</span>
+                            <span class="flex">
+                                <span>0 kr</span>
+                                <input type="range" min="0" max="20" value="20" id="priceRange"> 
+                            </span>
+                            <span id="currentRangeValue">20</span> kr
+                        </label>
+                    </p>
                 </div>
             </div>
             <div id="products-list">
@@ -42,42 +65,42 @@
                 <div class="shipping-info-container" id="">
                     <label>
                         <span>Förnamn</span>
-                        <input type="text" name="surname" id="input">
+                        <input type="text" name="surname" id="inputName">
                     </label>
 
                     <label>
                         <span>Efternamn</span>
-                        <input type="text" name="lastname" id="input">
+                        <input type="text" name="lastname" id="inputSurname">
                     </label>
 
                     <label>
                         <span>Adress</span>
-                        <input type="text" name="adress" id="input">
+                        <input type="text" name="adress" id="inputAdress">
                     </label>
 
                     <label>
                         <span>Postnummer</span>
-                        <input type="number" name="zip-code" id="input">
+                        <input type="number" name="zip-code" id="inputZip">
                     </label>
 
                     <label>
                         <span>Postort</span>
-                        <input type="text" name="postal-adress" id="input">
+                        <input type="text" name="postal-adress" id="inputArea">
                     </label>
 
                     <label>
                         <span>Ev. portkod</span>
-                        <input type="number" name="door-code" id="input">
+                        <input type="number" name="door-code" id="inputCode">
                     </label>
 
                     <label>
                         <span>Telefon</span>
-                        <input type="tel" name="phonenumber" id="input">
+                        <input type="tel" name="phonenumber" id="inputTel">
                     </label>
                     
                     <label>
                         <span>E-postadress</span>
-                        <input type="email" name="email" id="input">
+                        <input type="email" name="email" id="inputEmail">
                     </label>
                     
                     <div class="checkbox-container">

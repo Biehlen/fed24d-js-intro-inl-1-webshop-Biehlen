@@ -181,6 +181,10 @@ const products = [
     },
 ];
 
+// products.sort((product1, product2) => product1.price - product2.price);
+// products.sort((prod1, prod2) => prod1.name > prod2.name);
+
+
 
 // ------------------------------------------------
 // ------------------ HTML ELEMENTS ---------------
@@ -188,6 +192,10 @@ const products = [
 const productsListDiv = document.querySelector('#products-list');
 const cart = document.querySelector('#cart-summary');
 const filteredProductsDiv = document.querySelector('#filter-products');
+const categoryFilterRadios = document.querySelectorAll('[name="selectCategory"]');
+const priceRangeSlider = document.querySelector('priceRange');
+
+
 
 const today = new Date();
 
@@ -240,6 +248,13 @@ function updateAndPrintCart() {
     let msg = '';
     let priceIncrease = getPriceMultiplier();
 
+      // if cart is empty
+    if (cartProducts.length === 0) {
+        cart.innerHTML =
+        '<p>Varukorgen är tom!</p>';
+        return;
+    }
+
     cart.innerHTML = '', // Empty the div of former content
     cartProducts.forEach(product => {
         orderedProductAmount += product.amount;
@@ -285,7 +300,7 @@ function getPriceMultiplier() {
         return 1.15;
     }
     return 1;
-}
+};
 
 
 // ------------------------------------------------
@@ -407,6 +422,14 @@ const inputs = [
 const invoiceOption = document.querySelector('#invoice');
 const cardOption = document.querySelector('#card');
 const orderBtn = document.querySelector('#orderBtn');
+const inputName = document.querySelector('#inputName');
+const inputSurname = document.querySelector('#inputSurname');
+const inputAdress = document.querySelector('#inputAdress');
+const inputZip = document.querySelector('#inputZip');
+const inputArea = document.querySelector('#inputArea');
+const inputCode = document.querySelector('#inputCode');
+const inputTel = document.querySelector('#inputTel');
+const inputEmail = document.querySelector('#inputEmail');
 
 // Default options
 let selectedPaymentOption = 'card';
@@ -430,12 +453,9 @@ function switchPaymentMethod(e) {
     cardOption.classList.toggle('hidden');
 
     selectedPaymentOption = e.target.value;
-}
+};
 
 
-function isPersonalIdNumberValid() {
-    return personalIdRegEx.exec(personalId.value);
-}
 
 // Activate order button if all fields are correctly filled 
  
@@ -451,7 +471,7 @@ function activateOrderButton() {
         if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
             console.warn('Credit card number not valid.');
             return;
-        }
+        };
 
         // Check card year
         let year = Number(creditCardYear.value);
@@ -461,7 +481,7 @@ function activateOrderButton() {
         if (year > shortYear + 2 || year < shortYear) {
             console.warn('Credit card month not valid.');
             return;
-        }
+        };
 
         //TODO: Fixa månad, obs. "padStart" med 0
 
@@ -469,9 +489,8 @@ function activateOrderButton() {
         if (creditCardCvc.value.length !== 3 ) {
             console.warn('CVC not valid.');
             return;
-        }
-    }
+        };
+    };
 
     orderBtn.removeAttribute('disabled');
-}
-
+};
