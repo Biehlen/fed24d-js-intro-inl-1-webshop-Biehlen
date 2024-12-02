@@ -448,12 +448,36 @@ function sortByCategory() {
 function sortByPrice() {
     products.sort((productA, productB) => productA.price - productB.price);
     printProductsList();
-}
+};
 
 document.querySelector('#sortByName').addEventListener('click', sortByName);
 document.querySelector('#sortByRating').addEventListener('click', sortByRating);
 document.querySelector('#sortByCategory').addEventListener('click', sortByCategory);
 document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
+
+
+// ------------------------------------------------
+// -----------------------PAYMENT FORM ------------
+// ------------------------------------------------
+
+/**
+ * Validera alla inputfält
+ * Gör det obligatoriskt att klicka i godkännande för behandling av personuppgifter
+ * Gör submit knappen disabled tills alla fält är korrekt ifyllda
+ * Gör en "orderbekräftelse" med leveranstid och ordernummer 
+ */
+
+const inputName = document.querySelector('#inputName');
+const inputLastname = document.querySelector('#inputLastname');
+const inputAdress = document.querySelector('#inputAdress');
+const inputZip = document.querySelector('#inputZip');
+const inputArea = document.querySelector('#inputArea');
+const inputCode = document.querySelector('#inputCode');
+const inputTel = document.querySelector('#inputTel');
+const inputEmail = document.querySelector('#inputEmail');
+const gdpr = document.querySelector('#gdpr');
+
+//***********************VALIDATE*********************/
 
 
 
@@ -465,6 +489,7 @@ document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
 x Switches between invoice payment method and card payment method.
 x Toggles their visibility.
 - Validate card number, year, month and cvc with RegEx
+- Vid beställning över 800kr ska endast kortbetalning fungera
 */
 
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
@@ -479,14 +504,6 @@ const inputs = [
 const invoiceOption = document.querySelector('#invoice');
 const cardOption = document.querySelector('#card');
 const orderBtn = document.querySelector('#orderBtn');
-const inputName = document.querySelector('#inputName');
-const inputSurname = document.querySelector('#inputSurname');
-const inputAdress = document.querySelector('#inputAdress');
-const inputZip = document.querySelector('#inputZip');
-const inputArea = document.querySelector('#inputArea');
-const inputCode = document.querySelector('#inputCode');
-const inputTel = document.querySelector('#inputTel');
-const inputEmail = document.querySelector('#inputEmail');
 
 // Default options
 let selectedPaymentOption = 'card';

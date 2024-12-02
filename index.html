@@ -52,15 +52,15 @@
         </section>
         <section class="payment-options-container">
             <h3>Betalning:</h3>
-                <div class="shipping-info-container" id="">
+                <form class="shipping-info-container" id="">
                     <label>
                         <span>Förnamn</span>
-                        <input type="text" name="surname" id="inputName">
+                        <input type="text" name="firstname" id="inputName">
                     </label>
 
                     <label>
                         <span>Efternamn</span>
-                        <input type="text" name="lastname" id="inputSurname">
+                        <input type="text" name="lastname" id="inputLastname">
                     </label>
 
                     <label>
@@ -94,7 +94,7 @@
                     </label>
                     
                     <div class="checkbox-container">
-                        <input type="checkbox" class="checkbox">
+                        <input type="checkbox" class="checkbox" id="gdpr">
                         <p>Godkännande för behandling av personuppgifter</p>
                     </div>
                     
@@ -103,15 +103,18 @@
                         <p>Ja tack, jag vill gärna prenumerera på erat nyhetsbrev</p>
                     </div>
                     
+                    <div class="to-payment-btn">
+                        <p>Om allt är korrekt ifyllt:</p>
+                        <input type="submit" class="submit-button" id="submitPaymentInfoBtn" value="Vidare till betalning" disabled>
+                        <input type="reset" class="reset-button" id="resetBtn" value="Rensa varukorgen">
+                    </div>
+                </form>
+                <div>
                     <label class="discount-input">
                         <span>Rabattkod</span>
                         <input type="text" name="discount-code" id="input">
                         <button>Aktivera</button>
                     </label>
-                    <div class="to-payment-btn">
-                        <p>Om allt är korrekt ifyllt:</p>
-                        <button>Vidare till betalning</button>
-                    </div>
                 </div>
 
                 <div class="payment-options">

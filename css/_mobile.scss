@@ -106,7 +106,7 @@ main {
     .to-payment-btn {
         margin-bottom: 2rem;
 
-        button {
+        .submit-button {
             padding: 8px 16px;
             font-size: 1.2rem;
             background-color: green;
@@ -118,6 +118,16 @@ main {
               background-color: #b5b5b5;
               cursor: not-allowed;
             }
+        }
+
+        .reset-button {
+            padding: 8px 16px;
+            font-size: 1.2rem;
+            background-color: green;
+            border: 0;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
         }
     }
     
