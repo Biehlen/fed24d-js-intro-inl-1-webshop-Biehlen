@@ -19,6 +19,7 @@
             <h2>Våra produkter</h2>
             <div class="filter-products">
                 <div class="filter-container" id="filterProducts">
+                    <h3>Sortera efter:</h3>
                     <label>
                         <input type="radio" name="selectCategory" id="sortByName" value="name">
                         Name
@@ -32,7 +33,7 @@
                         Kategori
                     </label>
                     <label>
-                        <input type="radio" name="selectCategory" value="all">
+                        <input type="radio" name="selectCategory" value="all" checked>
                         Alla
                     </label>
 
@@ -42,6 +43,7 @@
                             <span class="flex">
                                 <span>0 kr</span>
                                 <input type="range" min="0" max="20" value="20" id="priceRange"> 
+                                <span>20 kr</span>
                             </span>
                             <span id="currentRangeValue">20</span> kr
                         </label>
@@ -105,12 +107,12 @@
                     
                     <div class="checkbox-container">
                         <input type="checkbox" class="checkbox">
-                        <p>Godkännande av behandling av personuppgifter</p>
+                        <p>Godkännande för behandling av personuppgifter</p>
                     </div>
                     
                     <div class="checkbox-container">
                         <input type="checkbox" class="checkbox" checked>
-                        <p>Ja tack, jag vill gärna få ert nyhetsbrev</p>
+                        <p>Ja tack, jag vill gärna prenumerera på erat nyhetsbrev</p>
                     </div>
                     
                     <label class="discount-input">
@@ -118,6 +120,10 @@
                         <input type="text" name="discount-code" id="input">
                         <button>Aktivera</button>
                     </label>
+                    <div class="to-payment-btn">
+                        <p>Om allt är korrekt ifyllt:</p>
+                        <button>Vidare till betalning</button>
+                    </div>
                 </div>
 
                 <div class="payment-options">
@@ -163,7 +169,7 @@
             <span>Kontaktuppgifter:</span>
             <a href="">munkfabriken@munkar.se</a>
             <a href="">08-1234567</a>
-            <p>© Munkfabriken</p>
+            <p>© Munkfabriken / Anna Biehl</p>
         </footer>
     </main>
     <script src="script.js"></script>

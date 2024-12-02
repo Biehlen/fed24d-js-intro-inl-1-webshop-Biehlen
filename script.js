@@ -16,7 +16,7 @@ const products = [
     },
     {
         id: 1,
-        name: 'Appelpie',
+        name: 'Applepie',
         price: 15,
         rating: 5,
         amount: 0,
@@ -181,8 +181,6 @@ const products = [
     },
 ];
 
-// products.sort((product1, product2) => product1.price - product2.price);
-// products.sort((prod1, prod2) => prod1.name > prod2.name);
 
 
 
@@ -193,6 +191,7 @@ const productsListDiv = document.querySelector('#products-list');
 const cart = document.querySelector('#cart-summary');
 const filteredProductsDiv = document.querySelector('#filter-products');
 const categoryFilterRadios = document.querySelectorAll('[name="selectCategory"]');
+const filterByName = document.querySelector('#sortByName');
 const priceRangeSlider = document.querySelector('priceRange');
 
 
@@ -353,7 +352,7 @@ function printProductsList() {
         button.addEventListener('click', increaseProductCount);
     });
 
-}
+};
 
 printProductsList();
 
@@ -372,7 +371,7 @@ function decreaseProductCount(e) {
 
     printProductsList();
     updateAndPrintCart();
-}
+};
 
 function increaseProductCount(e) {
     const productId = Number(e.target.id.replace('increase-', ''));
@@ -394,11 +393,11 @@ function increaseProductCount(e) {
     printProductsList();
 
     updateAndPrintCart();
-}
+};
 
 function slowCustomerMessage() {
     alert('Du är för långsam på att beställa!');
-}
+};
 
 // ------------------------------------------------
 // -----------------------PAYMENT OPTIONS----------
