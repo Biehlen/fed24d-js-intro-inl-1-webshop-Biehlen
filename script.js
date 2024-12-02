@@ -332,6 +332,7 @@ function printProductsList() {
                 <h3>${product.name}</h3>
                 <p>Pris: ${product.price * priceIncrease} kr</p>
                 <p>Omdöme: ${getRatingHtml(product.rating)}</p>
+                <p>Kategori: ${product.category}</p>
                 <div>
                     <button class="decrease" id="decrease-${product.id}">-</button>
                     <input type="number" min="0" value="${product.amount}" id="input-${product.id}">
@@ -354,7 +355,7 @@ function printProductsList() {
 
 };
 
-printProductsList();
+
 
 function decreaseProductCount(e) {
     const productId = Number(e.target.id.replace('decrease-', ''));
@@ -398,6 +399,62 @@ function increaseProductCount(e) {
 function slowCustomerMessage() {
     alert('Du är för långsam på att beställa!');
 };
+
+// ------------------------------------------------
+// -----------------------SORT --------------------
+// ------------------------------------------------
+
+/**
+ * Få ut värdet av det jag klickar på
+ * Göra en eventlyssnare på värdet 
+ * Eventlyssnaren trigga funktion
+ * Funktionen ska sortera 
+ * .sort - värden 
+ * .sort med strängar - kombineras med localcompare
+ */
+
+function sortByName () {
+
+   const sorted = products.sort((a, b) => {
+    if (a.name < b.name) {
+        return -1;
+    }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
+   });
+   printProductsList();
+};
+
+
+function sortByRating() {
+    products.sort((productA, productB) => productB.rating - productA.rating);
+    printProductsList();
+};
+
+function sortByCategory() {
+    const sortedCategory = products.sort((a, b) => {
+    if (a.category < b.category) {
+        return -1;
+    }
+    if (a.category > b.category) {
+        return 1;
+    }
+        return 0;
+    });
+    printProductsList();
+};
+
+function ShowAllProducts() {
+   
+};
+
+document.querySelector('#sortByName').addEventListener('click', sortByName);
+document.querySelector('#sortByRating').addEventListener('click', sortByRating);
+document.querySelector('#sortByCategory').addEventListener('click', sortByCategory);
+// document.querySelector('#showAllProducts').addEventListener('click', ShowAllProducts);
+
 
 // ------------------------------------------------
 // -----------------------PAYMENT OPTIONS----------
@@ -493,3 +550,5 @@ function activateOrderButton() {
 
     orderBtn.removeAttribute('disabled');
 };
+
+printProductsList();
