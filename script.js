@@ -189,10 +189,9 @@ const products = [
 // ------------------------------------------------
 const productsListDiv = document.querySelector('#products-list');
 const cart = document.querySelector('#cart-summary');
-const filteredProductsDiv = document.querySelector('#filter-products');
-const categoryFilterRadios = document.querySelectorAll('[name="selectCategory"]');
-const filterByName = document.querySelector('#sortByName');
-const priceRangeSlider = document.querySelector('priceRange');
+// const filteredProductsDiv = document.querySelector('#filter-products');
+// const categoryFilterRadios = document.querySelectorAll('[name="selectCategory"]');
+
 
 
 
@@ -446,14 +445,16 @@ function sortByCategory() {
     printProductsList();
 };
 
-function ShowAllProducts() {
-   
-};
+function sortByPrice() {
+    products.sort((productA, productB) => productA.price - productB.price);
+    printProductsList();
+}
 
 document.querySelector('#sortByName').addEventListener('click', sortByName);
 document.querySelector('#sortByRating').addEventListener('click', sortByRating);
 document.querySelector('#sortByCategory').addEventListener('click', sortByCategory);
-// document.querySelector('#showAllProducts').addEventListener('click', ShowAllProducts);
+document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
+
 
 
 // ------------------------------------------------
