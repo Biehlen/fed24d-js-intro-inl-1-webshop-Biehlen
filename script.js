@@ -187,13 +187,9 @@ const products = [
 // ------------------------------------------------
 // ------------------ HTML ELEMENTS ---------------
 // ------------------------------------------------
+
 const productsListDiv = document.querySelector('#products-list');
 const cart = document.querySelector('#cart-summary');
-// const filteredProductsDiv = document.querySelector('#filter-products');
-// const categoryFilterRadios = document.querySelectorAll('[name="selectCategory"]');
-
-
-
 
 const today = new Date();
 
@@ -202,6 +198,7 @@ const isMonday = today.getDay() === 1;
 const currentHour = today.getHours();
 
 let slownessTimeout = setTimeout(slowCustomerMessage, 1000  * 60 * 15);
+let slownessClear = setTimeout(slowCustomerClear, 1000 * 60 * 15);
 
 // ------------------------------------------------
 // -----------------------SHOW PRODUCTS IN CART----
@@ -210,32 +207,30 @@ let slownessTimeout = setTimeout(slowCustomerMessage, 1000  * 60 * 15);
 function updateAndPrintCart() {
 
     /* 
-    Att Göra: 
-    x En container i html där producterna skrivs ut
-    x Produkter som har minst 1 i antal: filter 
-    x Loop för att skriva ut produkterna
-    x totalsumma
-    - om det inte finns några produkter eller om man minskar antalet av en produkt till 0
-        så ska det skrivas ut att varukorgen är tom
+    TODO: 
+    x A container in html where the products are printed 
+    x The products that have a minimum of 1: filter 
+    x A loop to print the products 
+    x Totalsum
+    x If there is no products or if products are reduced to zero, wright out 
+    x that cart is empty 
     */
 
     /*
-    Specialregler: 
-    x På måndagar innan kl. 10 ges 10% rabatt på hela beställningssumman. Detta visas i varukorgssammanställningen 
-    som en rad med texten "Måndagsrabatt: 10 % på hela beställningen".
-    x På fredagar efter kl. 15 och fram till natten mellan söndag och måndag kl, 03.00 tillkommer ett helgpåslag på 15%
-    på alla munkar. Detta ska inte framgå för kunden att munkarna är dyrare, utan priser ska bara vara högre i "utskriften"
-    av munkarna. 
-    - Om kunden har beställt för totalt mer än 800 kr ska det inte gå att välja faktura som betalsätt
-    x Om kunden har beställt minst 10 munkar av samma sort ska munkpriset för just denna munksort rabatteras med 10 %
-    x Om kunden beställer totalt mer än 15 munkar så blir frakten gratis. I annat fall är fraktsumman 25 kr plus 10% av 
-    totalbeloppet i varukorgen 
-    x Om kunden inte slutfört beställningen inom 15 min kunden meddelas att det går för långsamt
-    - Och formuläret ska rensas
+    Special rules:
+    x On mondays before 10 give 10% discount on full order. This is shown in cart with a message.
+    x On fridays after 15 and till 03:00 on monday a weekendprice of 15% will be added to all products. 
+        This will not be shown to the customer.
+    x If total amount is higher than 800kr the invoice payment option will not be avalible
+    x If a customer has ordered more than 10 donuts of the same sort, a discount of 10% will be added to that specifik donuttype 
+    x If a customer has orderad a total of more than 15 donuts the shippingcost will be free. In other case the shipping 
+        is 25 kr plus 10% of the total value of the ordered products. 
+    x If the customer has'nt finished ordering in 15 minutes a message will appear that says
+        that the ordering procces is taking to long 
+    x And the ordering form will be emptyed 
     */
 
-    
-    
+
 
     const cartProducts = products.filter((product) => product.amount > 0);
 
@@ -273,6 +268,13 @@ function updateAndPrintCart() {
         };
     });
 
+  
+
+    if (sum > 800) {
+        document.querySelector('#invoiceRadio').classList.add('hidden');
+    } else {
+        document.querySelector('#invoiceRadio').classList.remove('hidden');
+    }
 
     if (sum <= 0) {
         return;
@@ -291,6 +293,7 @@ function updateAndPrintCart() {
     } else {
         cart.innerHTML += `<p>Frakt: ${Math.round(25 + (0.1 * sum))} kr</p>`;
     }
+
 };
 
 function getPriceMultiplier() {
@@ -299,7 +302,6 @@ function getPriceMultiplier() {
     }
     return 1;
 };
-
 
 // ------------------------------------------------
 // -------------------- PRINT PRODUCTS IN HTML-----
@@ -316,7 +318,7 @@ function getRatingHtml(rating) {
         
     }
     return html;
-}
+};
 
 
 function printProductsList() {
@@ -399,17 +401,16 @@ function slowCustomerMessage() {
     alert('Du är för långsam på att beställa!');
 };
 
+
 // ------------------------------------------------
 // -----------------------SORT --------------------
 // ------------------------------------------------
 
 /**
- * Få ut värdet av det jag klickar på
- * Göra en eventlyssnare på värdet 
- * Eventlyssnaren trigga funktion
- * Funktionen ska sortera 
- * .sort - värden 
- * .sort med strängar - kombineras med localcompare
+ x Recieve a value from whats clicked on
+ x Add an eventlistener on that value 
+ x The eventlistener triggers a funktion
+ x The function will sort 
  */
 
 function sortByName () {
@@ -461,21 +462,26 @@ document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
 // ------------------------------------------------
 
 /**
- * Validera alla inputfält
- * Gör det obligatoriskt att klicka i godkännande för behandling av personuppgifter
- * Gör submit knappen disabled tills alla fält är korrekt ifyllda
- * Gör en "orderbekräftelse" med leveranstid och ordernummer 
+ * Validate all inputs
+ * Make it obligatory to klick accept gdpr 
+ * Make the submit button disabled untill att fields are filled in korrektly
+ * Make an "order confirmation" with delivery time and ordernumber
  */
-
+const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
 const inputName = document.querySelector('#inputName');
 const inputLastname = document.querySelector('#inputLastname');
 const inputAdress = document.querySelector('#inputAdress');
 const inputZip = document.querySelector('#inputZip');
 const inputArea = document.querySelector('#inputArea');
-const inputCode = document.querySelector('#inputCode');
 const inputTel = document.querySelector('#inputTel');
 const inputEmail = document.querySelector('#inputEmail');
 const gdpr = document.querySelector('#gdpr');
+
+
+function slowCustomerClear() {
+    shippingInfoContainer.reset();
+};
+
 
 //***********************VALIDATE*********************/
 
@@ -489,7 +495,6 @@ const gdpr = document.querySelector('#gdpr');
 x Switches between invoice payment method and card payment method.
 x Toggles their visibility.
 - Validate card number, year, month and cvc with RegEx
-- Vid beställning över 800kr ska endast kortbetalning fungera
 */
 
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
@@ -557,7 +562,7 @@ function activateOrderButton() {
             return;
         };
 
-        //TODO: Fixa månad, obs. "padStart" med 0
+        //TODO: Fix month, obs. "padStart" with 0 
 
         // Check card CVC
         if (creditCardCvc.value.length !== 3 ) {
@@ -566,7 +571,14 @@ function activateOrderButton() {
         };
     };
 
-    orderBtn.removeAttribute('disabled');
+   orderBtn.removeAttribute('disabled');
 };
+
+function orderConfirmation(e) {
+    e.preventDefault();
+
+    const confirmationDiv = document.querySelector('#confirmation');
+    confirmationDiv.innerHTML = 'Tack för din beställning! Dina produkter är redo om 15 min.';
+}
 
 printProductsList();

@@ -52,7 +52,7 @@
         </section>
         <section class="payment-options-container">
             <h3>Betalning:</h3>
-                <form class="shipping-info-container" id="">
+                <form class="shipping-info-container" id="shippingInfoContainer">
                     <label>
                         <span>Förnamn</span>
                         <input type="text" name="firstname" id="inputName">
@@ -105,8 +105,8 @@
                     
                     <div class="to-payment-btn">
                         <p>Om allt är korrekt ifyllt:</p>
-                        <input type="submit" class="submit-button" id="submitPaymentInfoBtn" value="Vidare till betalning" disabled>
-                        <input type="reset" class="reset-button" id="resetBtn" value="Rensa varukorgen">
+                        <input type="submit" class="submit-button" id="submitPaymentInfoBtn" disabled value="Vidare till betalning" >
+                        <input type="reset" class="reset-button" id="resetBtn" value="Rensa formuläret">
                     </div>
                 </form>
                 <div>
@@ -119,11 +119,11 @@
 
                 <div class="payment-options">
                     <div class="selector">
-                        <label>
+                        <label id="invoiceRadio">
                             <input type="radio" name="payment-option" value="invoice" >
                             <span>Faktura</span>
                         </label>
-                        <label>
+                        <label id="cardRadio">
                           <input type="radio" name="payment-option" value="card" checked>
                           <span>Kort</span>
                         </label>
@@ -156,6 +156,7 @@
                     <button id="orderBtn" disabled>Beställ</button>
                 </div>
         </section>
+        <div id="confirmation"></div>
         <footer>
             <span>Kontaktuppgifter:</span>
             <a href="">munkfabriken@munkar.se</a>
