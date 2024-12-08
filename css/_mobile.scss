@@ -108,7 +108,7 @@ main {
 
         .submit-button {
             padding: 8px 16px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             background-color: green;
             border: 0;
             border-radius: 8px;
@@ -122,13 +122,18 @@ main {
 
         .reset-button {
             padding: 8px 16px;
-            font-size: 1.2rem;
+            font-size: 1rem;
             background-color: green;
             border: 0;
             border-radius: 8px;
             cursor: pointer;
             color: white;
         }
+    }
+
+    .discount-input {
+        display: flex;
+        justify-content: center;
     }
     
     * {

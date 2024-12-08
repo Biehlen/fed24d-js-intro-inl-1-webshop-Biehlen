@@ -181,7 +181,11 @@ const products = [
     },
 ];
 
-
+// 🦄🦄🦄🦄 Jennie, hur mycket mer måste jag ha gjort för att bli godkänd? 
+// Jag har haft en väldigt tuff period privat och verkligen kämpat med den här uppgiften
+// Men det är fortfarande en hel del saker kvar att göra som jag inte vet hur jag ska lösa själv. 
+// Kan du ge tips eller guida mig i vad som absolut måste vara klart för att uppnå godkänt skulle det vara till stor hjälp! 
+// 🦄🦄🦄🦄
 
 
 // ------------------------------------------------
@@ -558,11 +562,19 @@ function activateOrderButton() {
         const shortYear = Number(String(today.getFullYear()).substring(2));
 
         if (year > shortYear + 2 || year < shortYear) {
-            console.warn('Credit card month not valid.');
+            console.warn('Credit card year not valid.');
             return;
         };
 
         //TODO: Fix month, obs. "padStart" with 0 
+        let number = Number(creditCardMonth.value); 
+        
+        if (number >= 1 && number <= 12) {
+            creditCardMonthError.innerHTML = '';
+        } else {
+            creditCardMonthError.innerHTML = 'Fel: Månaden ej giltig.';
+        }
+        console.log(number);
 
         // Check card CVC
         if (creditCardCvc.value.length !== 3 ) {
