@@ -331,7 +331,7 @@ function printProductsList() {
             <article class="product">
                 <img src="${product.img.url}" alt="${product.img.alt}">
                 <h3>${product.name}</h3>
-                <p>Pris: ${product.price * priceIncrease} kr</p>
+                <p>Pris: ${Math.round(product.price * priceIncrease)} kr</p>
                 <p>Omdöme: ${getRatingHtml(product.rating)}</p>
                 <p>Kategori: ${product.category}</p>
                 <div>
