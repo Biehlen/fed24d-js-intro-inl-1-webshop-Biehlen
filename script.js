@@ -471,15 +471,20 @@ document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
  * Make the submit button disabled untill att fields are filled in korrektly
  * Make an "order confirmation" with delivery time and ordernumber
  */
-const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
-const inputName = document.querySelector('#inputName');
-const inputLastname = document.querySelector('#inputLastname');
-const inputAdress = document.querySelector('#inputAdress');
-const inputZip = document.querySelector('#inputZip');
-const inputArea = document.querySelector('#inputArea');
-const inputTel = document.querySelector('#inputTel');
-const inputEmail = document.querySelector('#inputEmail');
-const gdpr = document.querySelector('#gdpr');
+
+const shippingContainerInputs = Array.from(document.querySelectorAll('input[name="shippingInfoContainer"]'));
+const shippingInputs = [
+    document.querySelector('#inputName'),
+    document.querySelector('#inputLastname'),
+    document.querySelector('#inputAdress'),
+    document.querySelector('#inputZip'),
+    document.querySelector('#inputArea'),
+    document.querySelector('#inputTel'),
+    document.querySelector('#inputEmail'),
+    document.querySelector('#gdpr'),
+];
+
+const shippingInfoBtn = document.querySelector('#submitshippingInfoBtn');
 
 
 function slowCustomerClear() {
@@ -488,6 +493,21 @@ function slowCustomerClear() {
 
 
 //***********************VALIDATE*********************/
+
+// RegEx
+const emailRegEx = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+
+function activateShippingInfoButton() {
+    shippingInfoBtn.setAttribute('disabled', '');
+
+    if (emailRegEx.exec('inputEmail'.value) === null) {
+        console.warn('Email adress not valid.');
+        return;
+    };
+
+
+    orderBtn.removeAttribute('disabled');
+};
 
 
 
@@ -539,7 +559,6 @@ function switchPaymentMethod(e) {
 };
 
 
-
 // Activate order button if all fields are correctly filled 
  
 function activateOrderButton() {
@@ -556,25 +575,21 @@ function activateOrderButton() {
             return;
         };
 
-        // Check card year
-        let year = Number(creditCardYear.value);
-        const today = new Date ();
-        const shortYear = Number(String(today.getFullYear()).substring(2));
-
-        if (year > shortYear + 2 || year < shortYear) {
-            console.warn('Credit card year not valid.');
+         // Check card year
+         let year = Number(creditCardYear.value);
+         const today = new Date ();
+         const shortYear = Number(String(today.getFullYear()).substring(2));
+ 
+         if (year > shortYear + 2 || year < shortYear) {
+             console.warn('Credit card year not valid.');
+             return;
+         };
+ 
+         // Check card month
+        if (creditCardMonth.value.length !== 2) {
+            console.warn('Credit card month not valid.');
             return;
         };
-
-        //TODO: Fix month, obs. "padStart" with 0 
-        let number = Number(creditCardMonth.value); 
-        
-        if (number >= 1 && number <= 12) {
-            creditCardMonthError.innerHTML = '';
-        } else {
-            creditCardMonthError.innerHTML = 'Fel: Månaden ej giltig.';
-        }
-        console.log(number);
 
         // Check card CVC
         if (creditCardCvc.value.length !== 3 ) {
