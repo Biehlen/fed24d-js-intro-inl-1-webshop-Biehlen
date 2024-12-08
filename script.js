@@ -181,7 +181,7 @@ const products = [
     },
 ];
 
-// 🦄🦄🦄🦄 Jennie, hur mycket mer måste jag ha gjort för att bli godkänd? 
+// 🦄🦄🦄🦄 Jenni, hur mycket mer måste jag ha gjort för att bli godkänd? 
 // Jag har haft en väldigt tuff period privat och verkligen kämpat med den här uppgiften
 // Men det är fortfarande en hel del saker kvar att göra som jag inte vet hur jag ska lösa själv. 
 // Kan du ge tips eller guida mig i vad som absolut måste vara klart för att uppnå godkänt skulle det vara till stor hjälp! 
