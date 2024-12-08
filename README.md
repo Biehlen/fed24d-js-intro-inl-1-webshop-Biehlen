@@ -12,4 +12,5 @@ There had to be a minimum of 10 different products
 
 
 
-
+![Projectbild](https://github.com/Medieinstitutet/fed24d-js-intro-inl-1-webshop-Biehlen/blob/main/assets/Munkfabriken.png)
+![Lighthouse Validation]()
