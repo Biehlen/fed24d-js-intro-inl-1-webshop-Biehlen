@@ -104,11 +104,6 @@
                         <p>Ja tack, jag vill gärna prenumerera på erat nyhetsbrev</p>
                     </div>
                     
-                    <div class="to-payment-btn">
-                        <p>Om allt är korrekt ifyllt:</p>
-                        <input type="submit" class="submit-button" id="submitshippingInfoBtn" disabled value="Vidare till betalning" >
-                        <input type="reset" class="reset-button" id="resetBtn" value="Rensa formuläret">
-                    </div>
                     <div class="discount-input">
                         <label>
                             <span>Rabattkod</span>
@@ -116,46 +111,49 @@
                             <button>Aktivera</button>
                         </label>
                     </div>
+                    <div class="payment-options">
+                        <div class="selector">
+                            <label id="invoiceRadio">
+                                <input type="radio" name="payment-option" value="invoice" >
+                                <span>Faktura</span>
+                            </label>
+                            <label id="cardRadio">
+                              <input type="radio" name="payment-option" value="card" checked>
+                              <span>Kort</span>
+                            </label>
+                          </div>
+                        
+                          <div class="invoice hidden" id="invoice">
+                            <label>
+                              <span>Personnummer</span>
+                              <input type="text" name="personal-id" id="personalID" value="">
+                            </label>
+                          </div>
+                        
+                          <div class="card" id="card">
+                            <label>
+                              <span>Kortnummer</span>
+                              <input type="number" id="creditCardNumber" value="5100080000000000">
+                            </label>
+                            <label>
+                              <span>Datum</span>
+                              <span>
+                                <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input type="number" class="small" placeholder="YY" id="creditCardYear">
+                                </span>
+                            </label>
+                            <label>
+                              <span>CVC</span>
+                              <input type="number" placeholder="123" id="creditCardCvc">
+                            </label>
+                        </div>
+                        
+                        <button id="orderBtn" disabled>Beställ</button>
+                        <div class="to-payment-btn">
+                            <input type="reset" class="reset-button" id="resetBtn" value="Rensa formuläret">
+                        </div>
+                    </div>
                 </form>
                 
-                <div class="payment-options">
-                    <div class="selector">
-                        <label id="invoiceRadio">
-                            <input type="radio" name="payment-option" value="invoice" >
-                            <span>Faktura</span>
-                        </label>
-                        <label id="cardRadio">
-                          <input type="radio" name="payment-option" value="card" checked>
-                          <span>Kort</span>
-                        </label>
-                      </div>
-                    
-                      <div class="invoice hidden" id="invoice">
-                        <label>
-                          <span>Personnummer</span>
-                          <input type="text" name="personal-id" id="personalID" value="">
-                        </label>
-                      </div>
-                    
-                      <div class="card" id="card">
-                        <label>
-                          <span>Kortnummer</span>
-                          <input type="number" id="creditCardNumber" value="5100080000000000">
-                        </label>
-                        <label>
-                          <span>Datum</span>
-                          <span>
-                            <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input type="number" class="small" placeholder="YY" id="creditCardYear">
-                            </span>
-                        </label>
-                        <label>
-                          <span>CVC</span>
-                          <input type="number" placeholder="123" id="creditCardCvc">
-                        </label>
-                    </div>
-                    
-                    <button id="orderBtn" disabled>Beställ</button>
-                </div>
                <div id="confirmation"></div>
                 
         </section>

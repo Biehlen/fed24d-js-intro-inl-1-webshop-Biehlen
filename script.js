@@ -466,8 +466,7 @@ document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
 /**
  * Validate all inputs
  * Make it obligatory to klick accept gdpr 
- * Make the submit button disabled untill att fields are filled in korrektly
- * Make an "order confirmation" with delivery time and ordernumber
+ * Make the submit button disabled untill att fields are filled in correctly
  */
 
 const shippingContainerInputs = Array.from(document.querySelectorAll('input[name="shippingInfoContainer"]'));
@@ -485,6 +484,15 @@ const shippingInputs = [
 const shippingInfoBtn = document.querySelector('#submitshippingInfoBtn');
 const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
 
+// Add eventlistener 
+
+shippingInputs.forEach(input => {
+    input.addEventListener('change', activateOrderButton);
+    input.addEventListener('focusout', activateOrderButton);
+});
+
+console.log(shippingInputs);
+
 
 function slowCustomerClear() {
     shippingInfoContainer.reset();
@@ -496,42 +504,6 @@ function slowCustomerClear() {
 // RegEx
 const emailRegEx = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
-/*function activateShippingInfoButton() {
-    shippingInfoBtn.setAttribute('disabled', '');
-
-    if (emailRegEx.exec('inputEmail'.value) === null) {
-        console.warn('Email adress not valid.');
-        return;
-    };
-
-
-    orderBtn.removeAttribute('disabled');
-};*/
-
-// Add event listeners
-shippingInputs.forEach(input => {
-    input.addEventListener('change', activateOrderButton);
-    input.addEventListener('focusout', activateOrderButton);
-});
-
-document.querySelector('#submitshippingInfoBtn').addEventListener('click', shippingInfoBtn);
-
-
-function activateShippingInfoButton() {
-    shippingInfoBtn.setAttribute('disabled', '');
-
-    let hasSpecialError = false;
-    let customErrorMessage = '';
-
-    
-  
-
-
-    
-
-    shippingInfoBtn.removeAttribute('disabled');
-};
-
 
 // ------------------------------------------------
 // -----------------------PAYMENT OPTIONS----------
@@ -540,7 +512,7 @@ function activateShippingInfoButton() {
 /*
 x Switches between invoice payment method and card payment method.
 x Toggles their visibility.
-- Validate card number, year, month and cvc with RegEx
+x Validate card number, year, month and cvc with RegEx
 */
 
 const cardInvoiceRadios = Array.from(document.querySelectorAll('input[name="payment-option"]'));
@@ -587,6 +559,11 @@ function switchPaymentMethod(e) {
 function activateOrderButton() {
     orderBtn.setAttribute('disabled', '');
 
+    if (inputName.value <= 2) {
+        console.warn('Information is missing.');
+        return;
+    };
+
     if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
         return;
     }
@@ -622,8 +599,23 @@ function activateOrderButton() {
     };
 
    orderBtn.removeAttribute('disabled');
+
+   shippingInputs.forEach(input => {
+    input.addEventListener('change', orderBtn);
+    input.addEventListener('focusout', orderBtn);
+});
 };
 
+
+
+// ------------------------------------------------
+// ------------------ ORDER CONFIRMATION ----------
+// ------------------------------------------------
+
+/**
+ * Make an "order confirmation" with delivery time, total sum and ordernumber 
+ * 
+ */
 
 function orderConfirmation(e) {
     e.preventDefault();
