@@ -55,27 +55,28 @@
                 <form class="shipping-info-container" id="shippingInfoContainer">
                     <label>
                         <span>Förnamn</span>
-                        <input type="text" name="firstname" id="inputName">
+                        <input type="text" name="firstname" id="inputName" required>
+
                     </label>
 
                     <label>
                         <span>Efternamn</span>
-                        <input type="text" name="lastname" id="inputLastname">
+                        <input type="text" name="lastname" id="inputLastname" required>
                     </label>
 
                     <label>
                         <span>Adress</span>
-                        <input type="text" name="adress" id="inputAdress">
+                        <input type="text" name="adress" id="inputAdress" required>
                     </label>
 
                     <label>
                         <span>Postnummer</span>
-                        <input type="number" name="zip-code" id="inputZip">
+                        <input type="number" name="zip-code" id="inputZip" required>
                     </label>
 
                     <label>
                         <span>Postort</span>
-                        <input type="text" name="postal-adress" id="inputArea">
+                        <input type="text" name="postal-adress" id="inputArea" required>
                     </label>
 
                     <label>
@@ -85,16 +86,16 @@
 
                     <label>
                         <span>Telefon</span>
-                        <input type="tel" name="phonenumber" id="inputTel">
+                        <input type="tel" name="phonenumber" id="inputTel" required>
                     </label>
                     
                     <label>
                         <span>E-postadress</span>
-                        <input type="email" name="email" id="inputEmail">
+                        <input type="email" name="email" id="inputEmail" required>
                     </label>
                     
                     <div class="checkbox-container">
-                        <input type="checkbox" class="checkbox" id="gdpr">
+                        <input type="checkbox" class="checkbox" id="gdpr" required>
                         <p>Godkännande för behandling av personuppgifter</p>
                     </div>
                     
@@ -144,7 +145,7 @@
                         <label>
                           <span>Datum</span>
                           <span>
-                              <input type="number" class="small" placeholder="YY" id="creditCardYear">/<input type="number" class="small" placeholder="MM" id="creditCardMonth">
+                            <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input type="number" class="small" placeholder="YY" id="creditCardYear">
                             </span>
                         </label>
                         <label>
@@ -155,8 +156,9 @@
                     
                     <button id="orderBtn" disabled>Beställ</button>
                 </div>
+               <div id="confirmation"></div>
+                
         </section>
-        <div id="confirmation"></div>
         <footer>
             <span>Kontaktuppgifter:</span>
             <a href="">munkfabriken@munkar.se</a>

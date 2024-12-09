@@ -238,8 +238,6 @@ function updateAndPrintCart() {
 
     const cartProducts = products.filter((product) => product.amount > 0);
 
-    // Print selected products to cart 
-
     let sum = 0;
     let orderedProductAmount = 0;
     let msg = '';
@@ -289,14 +287,14 @@ function updateAndPrintCart() {
         msg += '<p>Måndagsrabatt: 10 % på hela beställningen</p>';
     }
 
-    cart.innerHTML += `<p>Total summa: ${Math.round(sum)} kr</p>`;
-    cart.innerHTML += `<div>${msg}</div>`;
-
     if (orderedProductAmount > 15) {
         cart.innerHTML += '<p>Frakt: 0 kr</p>';
     } else {
         cart.innerHTML += `<p>Frakt: ${Math.round(25 + (0.1 * sum))} kr</p>`;
     }
+
+    cart.innerHTML += `<p>Total summa: ${Math.round(sum + (25 + (0.1 * sum)))} kr</p>`;
+    cart.innerHTML += `<div>${msg}</div>`;
 
 };
 
@@ -485,6 +483,7 @@ const shippingInputs = [
 ];
 
 const shippingInfoBtn = document.querySelector('#submitshippingInfoBtn');
+const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
 
 
 function slowCustomerClear() {
@@ -497,7 +496,7 @@ function slowCustomerClear() {
 // RegEx
 const emailRegEx = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
 
-function activateShippingInfoButton() {
+/*function activateShippingInfoButton() {
     shippingInfoBtn.setAttribute('disabled', '');
 
     if (emailRegEx.exec('inputEmail'.value) === null) {
@@ -507,8 +506,31 @@ function activateShippingInfoButton() {
 
 
     orderBtn.removeAttribute('disabled');
-};
+};*/
 
+// Add event listeners
+shippingInputs.forEach(input => {
+    input.addEventListener('change', activateOrderButton);
+    input.addEventListener('focusout', activateOrderButton);
+});
+
+document.querySelector('#submitshippingInfoBtn').addEventListener('click', shippingInfoBtn);
+
+
+function activateShippingInfoButton() {
+    shippingInfoBtn.setAttribute('disabled', '');
+
+    let hasSpecialError = false;
+    let customErrorMessage = '';
+
+    
+  
+
+
+    
+
+    shippingInfoBtn.removeAttribute('disabled');
+};
 
 
 // ------------------------------------------------
@@ -533,6 +555,7 @@ const inputs = [
 const invoiceOption = document.querySelector('#invoice');
 const cardOption = document.querySelector('#card');
 const orderBtn = document.querySelector('#orderBtn');
+orderBtn.addEventListener('click', orderConfirmation);
 
 // Default options
 let selectedPaymentOption = 'card';
@@ -601,11 +624,15 @@ function activateOrderButton() {
    orderBtn.removeAttribute('disabled');
 };
 
+
 function orderConfirmation(e) {
     e.preventDefault();
 
     const confirmationDiv = document.querySelector('#confirmation');
-    confirmationDiv.innerHTML = 'Tack för din beställning! Dina produkter är redo om 15 min.';
-}
+    confirmationDiv.innerHTML = `
+    <h3> Tack för din beställning </h3>
+    <p> Dina produkter är redo för upphämtning inom 15 min.</p>
+    `;
+};
 
 printProductsList();

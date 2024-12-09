@@ -130,11 +130,6 @@ main {
             color: white;
         }
     }
-
-    .discount-input {
-        display: flex;
-        justify-content: center;
-    }
     
     * {
         box-sizing: border-box;
@@ -155,6 +150,7 @@ main {
       }
       
       .payment-options {
+        margin-bottom: 3rem;
         background-color: rgb(210, 231, 231);
         border-radius: 8px;
         padding: 8px;
@@ -191,18 +187,18 @@ main {
         }
       
         .card, .invoice {
-          label {
-            display: flex;
-            gap: 8px;
-            margin-block: 8px;
-            align-items: center;
-            justify-content: space-between;
+            label {
+                display: flex;
+                gap: 8px;
+                margin-block: 8px;
+                align-items: center;
+                justify-content: space-between;
           }
         }
       
     }
 
-      footer {
+    footer {
 
         span {
             font-weight: 800;
@@ -212,5 +208,5 @@ main {
             font-size: 0.9rem;
             font-weight: 800;
         }
-      }
+    }
 }
