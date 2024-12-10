@@ -181,12 +181,6 @@ const products = [
     },
 ];
 
-// 🦄🦄🦄🦄 Jenni, hur mycket mer måste jag ha gjort för att bli godkänd? 
-// Jag har haft en väldigt tuff period privat och verkligen kämpat med den här uppgiften
-// Men det är fortfarande en hel del saker kvar att göra som jag inte vet hur jag ska lösa själv. 
-// Kan du ge tips eller guida mig i vad som absolut måste vara klart för att uppnå godkänt skulle det vara till stor hjälp! 
-// 🦄🦄🦄🦄
-
 
 // ------------------------------------------------
 // ------------------ HTML ELEMENTS ---------------
@@ -363,6 +357,8 @@ function printProductsList() {
 function decreaseProductCount(e) {
     const productId = Number(e.target.id.replace('decrease-', ''));
 
+    const clickedButtonId = e.target.id;
+
     const foundProductIndex = products.findIndex(product => product.id === productId);
     console.log('found product at index', foundProductIndex);
 
@@ -374,17 +370,21 @@ function decreaseProductCount(e) {
 
 
     printProductsList();
+    document.querySelector(`#${clickedButtonId}`).focus();
+
     updateAndPrintCart();
 };
 
 function increaseProductCount(e) {
     const productId = Number(e.target.id.replace('increase-', ''));
+
+    const clickedButtonId = e.target.id;    
     console.log('clicked on button with id', productId);
     // Find the right product in the array that has the right id
     const foundProductIndex = products.findIndex(product => product.id === productId);
     console.log('found product at index', foundProductIndex);
 
-    // Massage to myself. If product does'nt exist, print error message in console
+    // Message to myself. If product does'nt exist, print error message in console
     if (foundProductIndex === -1) {
         console.error('Det finns ingen sådan produkt i produktlistan! Kolla att id:t är korrekt')
         return;
@@ -395,6 +395,7 @@ function increaseProductCount(e) {
 
     // Print productlist 
     printProductsList();
+    document.querySelector(`#${clickedButtonId}`).focus();
 
     updateAndPrintCart();
 };
