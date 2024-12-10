@@ -294,6 +294,12 @@ function updateAndPrintCart() {
 
     // const cartTotalPrice = Math.round(sum + (25 + (0.1 * sum)));
     // total.totalprice = cartTotalPrice
+    /** 
+    totalCartAmount = orderedProductAmount;
+    totalCartPrice = Math.round(sum + (25 + (0.1 * sum)));
+    console.log('Total Cart Amount:', totalCartAmount);
+    console.log('Total Cart Price:', totalCartPrice);
+    */
 
 };
 // console.log('totalpris', total.totalprice);
@@ -366,7 +372,7 @@ function decreaseProductCount(e) {
     const clickedButtonId = e.target.id;
 
     const foundProductIndex = products.findIndex(product => product.id === productId);
-    console.log('found product at index', foundProductIndex);
+    //console.log('found product at index', foundProductIndex);
 
     if (products[productId].amount <= 0) {
         products[productId].amount = 0;
@@ -385,10 +391,10 @@ function increaseProductCount(e) {
     const productId = Number(e.target.id.replace('increase-', ''));
 
     const clickedButtonId = e.target.id;    
-    console.log('clicked on button with id', productId);
+    // console.log('clicked on button with id', productId);
     // Find the right product in the array that has the right id
     const foundProductIndex = products.findIndex(product => product.id === productId);
-    console.log('found product at index', foundProductIndex);
+    // console.log('found product at index', foundProductIndex);
 
     // Message to myself. If product does'nt exist, print error message in console
     if (foundProductIndex === -1) {
@@ -493,6 +499,11 @@ const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
 
 const inputNameError = document.querySelector('#inputNameError');
 const inputLastNameError = document.querySelector('#inputLastNameError');
+const inputAdressError = document.querySelector('#inputAdressError');
+const inputAreaError = document.querySelector('#inputAreaError');
+const inputTelError = document.querySelector('#inputTelError');
+const inputEmailError = document.querySelector('#inputEmailError');
+const gdprError = document.querySelector('#gdrpError');
 
 
 // Add eventlistener 
@@ -502,7 +513,7 @@ shippingInputs.forEach(input => {
     input.addEventListener('focusout', activateOrderButton);
 });
 
-console.log(shippingInputs);
+// console.log(shippingInputs);
 
 
 function slowCustomerClear() {
@@ -576,14 +587,32 @@ function switchPaymentMethod(e) {
 function activateOrderButton() {
     orderBtn.setAttribute('disabled', '');
 
-    if (inputName.value <= 2) {
-        console.warn('Information is missing.');
+   /**  if (inputName.value <= 2) {
+        inputNameError.innerHTML = 'Fel: Förnamnet är ej giltigt.';
         return;
+    } else {
+        inputNameError.innerHTML = '';
     };
+
+    if (inputLastName.value <= 2) {
+        inputLastNameError.innerHTML = 'Fel: Efternamnet är ej giltigt.';
+        return;
+    } else {
+        inputLastNameError.innerHTML = '';
+    };
+
+    if (emailRegEx.exec(inputEmail.value) === null) {
+        inputEmailError.innerHTML = 'Fel: E-postadressen är ej giltig.';
+        return;
+    } else {
+        inputEmailError.innerHTML = '';
+    };
+    */
+
 
     if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
         return;
-    }
+    };
 
     if (selectedPaymentOption === 'card') {
         //check card number
@@ -653,5 +682,4 @@ function orderConfirmation(e) {
     </article>
     `;
 };
-
 printProductsList();
