@@ -485,6 +485,10 @@ const shippingInputs = [
 const shippingInfoBtn = document.querySelector('#submitshippingInfoBtn');
 const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
 
+const inputNameError = document.querySelector('#inputNameError');
+const inputLastNameError = document.querySelector('#inputLastNameError');
+
+
 // Add eventlistener 
 
 shippingInputs.forEach(input => {
@@ -524,6 +528,12 @@ const inputs = [
     document.querySelector('#creditCardCvc'),
     document.querySelector('#personalID')
 ];
+
+const personalIdError = document.querySelector('#personalIdError');
+const creditCardNumberError = document.querySelector('#creditCardNumberError');
+const creditCardMonthError = document.querySelector('#creditCardMonthError');
+const creditCardYearError = document.querySelector('#creditCardYearError');
+const creditCardCvcError = document.querySelector('#creditCardCvcError');
 
 const invoiceOption = document.querySelector('#invoice');
 const cardOption = document.querySelector('#card');
@@ -572,8 +582,18 @@ function activateOrderButton() {
     if (selectedPaymentOption === 'card') {
         //check card number
         if (creditCardNumberRegEx.exec(creditCardNumber.value) === null) {
-            console.warn('Credit card number not valid.');
+            creditCardNumberError.innerHTML = 'Fel: Kortnummret är ej giltigt.';
             return;
+        } else {
+            creditCardNumberError.innerHTML = '';
+        };
+
+           // Check card month
+           if (creditCardMonth.value.length < 2) {
+            creditCardMonthError.innerHTML = 'Fel: Månaden är ej giltig.';
+            return;
+        } else {
+            creditCardMonthError.innerHTML = '';
         };
 
          // Check card year
@@ -582,20 +602,18 @@ function activateOrderButton() {
          const shortYear = Number(String(today.getFullYear()).substring(2));
  
          if (year > shortYear + 2 || year < shortYear) {
-             console.warn('Credit card year not valid.');
+             creditCardYearError.innerHTML = 'Fel: Årtalet är ej giltigt.';
              return;
+         } else {
+            creditCardYearError.innerHTML = '';
          };
  
-         // Check card month
-        if (creditCardMonth.value.length !== 2) {
-            console.warn('Credit card month not valid.');
-            return;
-        };
-
         // Check card CVC
         if (creditCardCvc.value.length !== 3 ) {
-            console.warn('CVC not valid.');
+            creditCardCvcError.innerHTML = 'Fel: CVC numret är ej giltigt.';
             return;
+        } else {
+            creditCardCvcError.innerHTML = '';
         };
     };
 

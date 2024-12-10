@@ -56,27 +56,31 @@
                     <label>
                         <span>Förnamn</span>
                         <input type="text" name="firstname" id="inputName" required>
-
+                        <span class="error" id="inputNameError"></span>
                     </label>
 
                     <label>
                         <span>Efternamn</span>
                         <input type="text" name="lastname" id="inputLastname" required>
+                        <span class="error" id="inputLastNameError"></span>
                     </label>
 
                     <label>
                         <span>Adress</span>
                         <input type="text" name="adress" id="inputAdress" required>
+                        <span class="error" id="inputAdressError"></span>
                     </label>
 
                     <label>
                         <span>Postnummer</span>
                         <input type="number" name="zip-code" id="inputZip" required>
+                        <span class="error" id="inputZipError"></span>
                     </label>
 
                     <label>
                         <span>Postort</span>
                         <input type="text" name="postal-adress" id="inputArea" required>
+                        <span class="error" id="inputAreaError"></span>
                     </label>
 
                     <label>
@@ -87,16 +91,19 @@
                     <label>
                         <span>Telefon</span>
                         <input type="tel" name="phonenumber" id="inputTel" required>
+                        <span class="error" id="inputTelError"></span>
                     </label>
                     
                     <label>
                         <span>E-postadress</span>
                         <input type="email" name="email" id="inputEmail" required>
+                        <span class="error" id="inputEmailError"></span>
                     </label>
                     
                     <div class="checkbox-container">
                         <input type="checkbox" class="checkbox" id="gdpr" required>
                         <p>Godkännande för behandling av personuppgifter</p>
+                        <span class="error" id="gdprError"></span>
                     </div>
                     
                     <div class="checkbox-container">
@@ -127,6 +134,7 @@
                             <label>
                               <span>Personnummer</span>
                               <input type="text" name="personal-id" id="personalID" value="">
+                              <span class="error" id="personalIdError"></span>
                             </label>
                           </div>
                         
@@ -134,16 +142,21 @@
                             <label>
                               <span>Kortnummer</span>
                               <input type="number" id="creditCardNumber" value="5100080000000000">
+                              <span class="error" id="creditCardNumberError"></span>
                             </label>
                             <label>
                               <span>Datum</span>
                               <span>
-                                <input type="number" class="small" placeholder="MM" id="creditCardMonth">/<input type="number" class="small" placeholder="YY" id="creditCardYear">
+                                <input type="number" class="small" placeholder="MM" id="creditCardMonth">
+                                <span class="error" id="creditCardMonthError"></span>
+                                <input type="number" class="small" placeholder="YY" id="creditCardYear">
+                                <span class="error" id="creditCardYearError"></span>
                                 </span>
                             </label>
                             <label>
                               <span>CVC</span>
                               <input type="number" placeholder="123" id="creditCardCvc">
+                              <span class="error" id="creditCardCvcError"></span>
                             </label>
                         </div>
                         
