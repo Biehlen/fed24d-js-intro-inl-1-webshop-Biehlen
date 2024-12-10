@@ -185,6 +185,26 @@ main {
         }
     }
 
+    .confirmation {
+        margin-bottom: 2rem;
+
+        .confirmation-div {
+            border: 1px solid black;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    }
+    
+
     
 
     footer {

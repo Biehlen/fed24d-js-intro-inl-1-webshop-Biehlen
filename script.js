@@ -202,6 +202,8 @@ let slownessClear = setTimeout(slowCustomerClear, 1000 * 60 * 15);
 // -----------------------SHOW PRODUCTS IN CART----
 // ------------------------------------------------
 
+// const total = {totalprice: 0};
+
 function updateAndPrintCart() {
 
     /* 
@@ -290,7 +292,11 @@ function updateAndPrintCart() {
     cart.innerHTML += `<p>Total summa: ${Math.round(sum + (25 + (0.1 * sum)))} kr</p>`;
     cart.innerHTML += `<div>${msg}</div>`;
 
+    // const cartTotalPrice = Math.round(sum + (25 + (0.1 * sum)));
+    // total.totalprice = cartTotalPrice
+
 };
+// console.log('totalpris', total.totalprice);
 
 function getPriceMultiplier() {
     if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
@@ -641,8 +647,10 @@ function orderConfirmation(e) {
 
     const confirmationDiv = document.querySelector('#confirmation');
     confirmationDiv.innerHTML = `
-    <h3> Tack för din beställning </h3>
-    <p> Dina produkter är redo för upphämtning inom 15 min.</p>
+    <article class="confirmation-div"> 
+        <h3> Tack för din beställning! </h3>
+        <p> Dina produkter är redo för upphämtning inom 15 min.</p>
+    </article>
     `;
 };
 
