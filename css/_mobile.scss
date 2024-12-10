@@ -120,17 +120,38 @@ main {
             display: none;
           }
           
-          .payment-options {
+        .payment-options {
             margin-bottom: 3rem;
             background-color: rgb(210, 231, 231);
             border-radius: 8px;
             padding: 8px;
             border: 1px solid #262626;
+
+            input {
+                border-radius: 8px;
+            }
     
             .invoiceRadio {
     
                 .hidden {
                     display: none;
+                }
+            }
+
+            .credit-card-date-container {
+                display: flex;
+                flex-direction: row;
+                
+                #creditCardMonth {
+                    margin-right: 1rem;
+                }
+
+                .slash {
+                    margin-top: 0.5rem;
+                }
+
+                #creditCardYear {
+                    margin-left: 1rem;
                 }
             }
           
@@ -166,7 +187,18 @@ main {
             .selector {
               margin-block: 16px;
               text-align: center;
-            }
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+
+              #invoiceRadio {
+                margin-right: 1rem;
+              }
+
+              #cardRadio {
+                margin-left: 1rem;
+              }
+            }  
           
             input.small {
               width: 80px;

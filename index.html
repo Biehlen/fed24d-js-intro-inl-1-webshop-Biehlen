@@ -121,24 +121,24 @@
                     <div class="payment-options">
                         <div class="selector">
                             <label id="invoiceRadio">
-                                <input type="radio" name="payment-option" value="invoice" >
                                 <span>Faktura</span>
+                                <input type="radio" name="payment-option" value="invoice" >
                             </label>
                             <label id="cardRadio">
-                              <input type="radio" name="payment-option" value="card" checked>
-                              <span>Kort</span>
+                                <span>Kort</span>
+                                <input type="radio" name="payment-option" value="card" checked>
                             </label>
-                          </div>
+                        </div>
                         
-                          <div class="invoice hidden" id="invoice">
+                        <div class="invoice hidden" id="invoice">
                             <label>
                               <span>Personnummer</span>
                               <input type="text" name="personal-id" id="personalID" value="">
                               <span class="error" id="personalIdError"></span>
                             </label>
-                          </div>
+                        </div>
                         
-                          <div class="card" id="card">
+                        <div class="card" id="card">
                             <label>
                               <span>Kortnummer</span>
                               <input type="number" id="creditCardNumber" value="5100080000000000">
@@ -146,11 +146,12 @@
                             </label>
                             <label>
                               <span>Datum</span>
-                              <span>
-                                <input type="number" class="small" placeholder="MM" id="creditCardMonth">
-                                <span class="error" id="creditCardMonthError"></span>
-                                <input type="number" class="small" placeholder="YY" id="creditCardYear">
-                                <span class="error" id="creditCardYearError"></span>
+                                <span class="credit-card-date-container">
+                                    <input type="number" class="small" placeholder="MM" id="creditCardMonth">
+                                    <span class="error" id="creditCardMonthError"></span>
+                                    <span class="slash">/</span>
+                                    <input type="number" class="small" placeholder="YY" id="creditCardYear">
+                                    <span class="error" id="creditCardYearError"></span>
                                 </span>
                             </label>
                             <label>
