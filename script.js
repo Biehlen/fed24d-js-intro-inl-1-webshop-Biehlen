@@ -202,7 +202,10 @@ let slownessClear = setTimeout(slowCustomerClear, 1000 * 60 * 15);
 // -----------------------SHOW PRODUCTS IN CART----
 // ------------------------------------------------
 
-// const total = {totalprice: 0};
+const cartTotals = {
+    totalCartAmount: 0,
+    totalCartPrice: 0,
+};
 
 function updateAndPrintCart() {
 
@@ -289,20 +292,16 @@ function updateAndPrintCart() {
         cart.innerHTML += `<p>Frakt: ${Math.round(25 + (0.1 * sum))} kr</p>`;
     }
 
-    cart.innerHTML += `<p>Total summa: ${Math.round(sum + (25 + (0.1 * sum)))} kr</p>`;
+    const totalsum = `<p>Totalsumma: ${Math.round(sum + (25 + (0.1 * sum)))} kr</p>`;
+    cart.innerHTML += totalsum;
     cart.innerHTML += `<div>${msg}</div>`;
 
-    // const cartTotalPrice = Math.round(sum + (25 + (0.1 * sum)));
-    // total.totalprice = cartTotalPrice
-    /** 
-    totalCartAmount = orderedProductAmount;
-    totalCartPrice = Math.round(sum + (25 + (0.1 * sum)));
-    console.log('Total Cart Amount:', totalCartAmount);
-    console.log('Total Cart Price:', totalCartPrice);
-    */
+    cartTotals.totalCartAmount = orderedProductAmount;
+    cartTotals.totalCartPrice = totalsum;
+    console.log('Total Cart Amount:', cartTotals.totalCartAmount);
+    console.log('Total Cart Price:', cartTotals.totalCartPrice);
 
 };
-// console.log('totalpris', total.totalprice);
 
 function getPriceMultiplier() {
     if ((isFriday && currentHour >= 15) || (isMonday && currentHour <= 3)) {
@@ -372,7 +371,6 @@ function decreaseProductCount(e) {
     const clickedButtonId = e.target.id;
 
     const foundProductIndex = products.findIndex(product => product.id === productId);
-    //console.log('found product at index', foundProductIndex);
 
     if (products[productId].amount <= 0) {
         products[productId].amount = 0;
@@ -667,8 +665,9 @@ function activateOrderButton() {
 // ------------------------------------------------
 
 /**
- * Make an "order confirmation" with delivery time, total sum and ordernumber 
- * 
+ x Make an "order confirmation" with 
+ x delivery time and 
+ x total sum 
  */
 
 function orderConfirmation(e) {
@@ -678,7 +677,10 @@ function orderConfirmation(e) {
     confirmationDiv.innerHTML = `
     <article class="confirmation-div"> 
         <h3> Tack för din beställning! </h3>
-        <p> Dina produkter är redo för upphämtning inom 15 min.</p>
+        <p class="pick-up-time"> Dina munkar är redo för upphämtning inom 15 min.</p>
+        <p> Antal beställda munkar: ${cartTotals.totalCartAmount}st</p>
+        <p> ${cartTotals.totalCartPrice}</p>
+        <p class="welcome-back"> Varmt välkommen åter! </p>
     </article>
     `;
 };

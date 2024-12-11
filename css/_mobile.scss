@@ -61,11 +61,29 @@ main {
         }
     }
 
-    .cart {
+    .cart-container {
         background-color: rgb(215, 236, 215);
-        width: 100vw;
-        padding: 10px;
+
+        .cart {
+            width: 80%;
+            padding: 2rem;
+    
+            h3 {
+                width: 80%;
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+    
+            #cart-summary {
+                width: 80%;
+                font-size: 1.2rem;
+            }
+        }
     }
+   
     
     
     .shipping-info-container {
@@ -222,7 +240,7 @@ main {
 
         .confirmation-div {
             border: 1px solid black;
-            background-color: white;
+            background-color: rgb(215, 236, 215);
             padding: 2rem;
             border-radius: 8px;
 
@@ -230,8 +248,17 @@ main {
                 font-size: 1.5rem;
             }
 
+            .pick-up-time {
+                text-decoration: underline;
+            }
+
             p {
                 font-size: 1.2rem;
+            }
+
+            .welcome-back {
+                margin-top: 3rem;
+                font-weight: 700;
             }
         }
     }
