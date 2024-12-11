@@ -483,7 +483,7 @@ document.querySelector('#sortByPrice').addEventListener('click', sortByPrice);
 const shippingContainerInputs = Array.from(document.querySelectorAll('input[name="shippingInfoContainer"]'));
 const shippingInputs = [
     document.querySelector('#inputName'),
-    document.querySelector('#inputLastname'),
+    document.querySelector('#inputLastName'),
     document.querySelector('#inputAdress'),
     document.querySelector('#inputZip'),
     document.querySelector('#inputArea'),
@@ -498,6 +498,7 @@ const shippingInfoContainer = document.querySelector('#shippingInfoContainer');
 const inputNameError = document.querySelector('#inputNameError');
 const inputLastNameError = document.querySelector('#inputLastNameError');
 const inputAdressError = document.querySelector('#inputAdressError');
+const inputZipError = document.querySelector('#inputZipError');
 const inputAreaError = document.querySelector('#inputAreaError');
 const inputTelError = document.querySelector('#inputTelError');
 const inputEmailError = document.querySelector('#inputEmailError');
@@ -523,6 +524,7 @@ function slowCustomerClear() {
 
 // RegEx
 const emailRegEx = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+const phoneRegEx = new RegExp(/^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/);
 
 
 // ------------------------------------------------
@@ -550,6 +552,8 @@ const creditCardMonthError = document.querySelector('#creditCardMonthError');
 const creditCardYearError = document.querySelector('#creditCardYearError');
 const creditCardCvcError = document.querySelector('#creditCardCvcError');
 
+
+
 const invoiceOption = document.querySelector('#invoice');
 const cardOption = document.querySelector('#card');
 const orderBtn = document.querySelector('#orderBtn');
@@ -568,6 +572,7 @@ inputs.forEach(input => {
     input.addEventListener('focusout', activateOrderButton);
 });
 
+
 cardInvoiceRadios.forEach(radioBtn => {
     radioBtn.addEventListener('change', switchPaymentMethod);
 });
@@ -585,18 +590,48 @@ function switchPaymentMethod(e) {
 function activateOrderButton() {
     orderBtn.setAttribute('disabled', '');
 
-   /**  if (inputName.value <= 2) {
+    // Shipping information
+
+    if (inputName.value.length <= 2) {
         inputNameError.innerHTML = 'Fel: Förnamnet är ej giltigt.';
         return;
     } else {
         inputNameError.innerHTML = '';
     };
 
-    if (inputLastName.value <= 2) {
+    if (inputLastName.value.length <= 2) {
         inputLastNameError.innerHTML = 'Fel: Efternamnet är ej giltigt.';
         return;
     } else {
         inputLastNameError.innerHTML = '';
+    };
+
+    if (inputAdress.value.length <= 5) {
+        inputAdressError.innerHTML = 'Fel: Adressen är ej giltig.';
+        return;
+    } else {
+        inputAdressError.innerHTML = '';
+    };
+
+    if (inputZip.value.length !== 5) {
+        inputZipError.innerHTML = 'Fel: Postnumret är ej giltigt.';
+        return;
+    } else {
+        inputZipError.innerHTML = '';
+    };
+
+    if (inputArea.value.length <= 2) {
+        inputAreaError.innerHTML = 'Fel: Postorten är ej giltig.';
+        return;
+    } else {
+        inputAreaError.innerHTML = '';
+    };
+
+    if (phoneRegEx.exec(inputTel.value) === null) {
+        inputTelError.innerHTML = 'Fel: Telefonnummret är ej giltigt.';
+        return;
+    } else {
+        inputTelError.innerHTML = '';
     };
 
     if (emailRegEx.exec(inputEmail.value) === null) {
@@ -605,11 +640,15 @@ function activateOrderButton() {
     } else {
         inputEmailError.innerHTML = '';
     };
-    */
 
+    
+    // Payment options
 
-    if (selectedPaymentOption === 'invoice' && !isPersonalIdNumberValid()) {
+    if (selectedPaymentOption === 'invoice' && personalIdRegEx.exec(personalID.value) === null) {
+        personalIdError.innerHTML = 'Fel: Personnumret är ej giltigt.';
         return;
+    } else {
+        personalIdError.innerHTML = '';
     };
 
     if (selectedPaymentOption === 'card') {
