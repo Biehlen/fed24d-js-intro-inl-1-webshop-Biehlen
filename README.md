@@ -27,4 +27,4 @@ An image of my webshop is added below and also a lighthouse report.
 ![Projectbild](https://github.com/Medieinstitutet/fed24d-js-intro-inl-1-webshop-Biehlen/blob/main/assets/Munkfabriken.png)
 ![Lighthouse Validation](Validering/Skärmavbild%202024-12-08%20kl.%2018.26.01.png)
 ![HTML validation](Validering/Html-validering.pdf)
-![CSS validation](Validering/CSS-validering.pdf)
+![CSS validation](https://github.com/Medieinstitutet/fed24d-js-intro-inl-1-webshop-Biehlen/blob/main/Validering/CSS-validering.pdf)
