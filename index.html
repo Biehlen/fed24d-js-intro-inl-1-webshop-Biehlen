@@ -61,7 +61,7 @@
 
                     <label>
                         <span>Efternamn</span>
-                        <input type="text" name="lastname" id="inputLastname" required>
+                        <input type="text" name="lastname" id="inputLastName" required>
                         <span class="error" id="inputLastNameError"></span>
                     </label>
 
@@ -135,7 +135,7 @@
                             <label>
                               <span>Personnummer</span>
                               <input type="text" name="personal-id" id="personalID" value="">
-                              <span class="error" id="personalIdError"></span>
+                              <span class="error" name="error" id="personalIdError"></span>
                             </label>
                         </div>
                         
@@ -143,22 +143,24 @@
                             <label>
                               <span>Kortnummer</span>
                               <input type="number" id="creditCardNumber" value="5100080000000000">
-                              <span class="error" id="creditCardNumberError"></span>
+                              <span class="error" name="error" id="creditCardNumberError"></span>
                             </label>
                             <label>
                               <span>Datum</span>
                                 <span class="credit-card-date-container">
                                     <input type="number" class="small" placeholder="MM" id="creditCardMonth">
-                                    <span class="error" id="creditCardMonthError"></span>
                                     <span class="slash">/</span>
                                     <input type="number" class="small" placeholder="YY" id="creditCardYear">
-                                    <span class="error" id="creditCardYearError"></span>
                                 </span>
+                                <div class="error">
+                                    <span name="error" id="creditCardMonthError"></span>
+                                    <span name="error" id="creditCardYearError"></span>
+                                </div>
                             </label>
                             <label>
                               <span>CVC</span>
                               <input type="number" placeholder="123" id="creditCardCvc">
-                              <span class="error" id="creditCardCvcError"></span>
+                              <span class="error" name="error" id="creditCardCvcError"></span>
                             </label>
                         </div>
                         
